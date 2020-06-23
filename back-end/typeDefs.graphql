@@ -1,0 +1,10 @@
+scalar DateTime
+
+type Song {
+    name : String!
+    url : String
+    seeCount : String
+    lyrics : String
+    album : String
+    date : DateTime 
+}
