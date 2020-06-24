@@ -8,3 +8,7 @@ type Song {
     album : String
     date : DateTime 
 }
+
+type Query{
+    test: String!
+}
