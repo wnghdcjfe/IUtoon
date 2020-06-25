@@ -8,4 +8,14 @@
 주홍철(프리랜서), 남승원(선린고1)
 
 # 참고링크
-https://brunch.co.kr/@kakao-it/279
+ - https://brunch.co.kr/@kakao-it/279
+ - https://twitter.com/allofiu
+
+## 스키마
+### popularSong - 10 limit
+```
+name
+album
+date
+albumImg
+```

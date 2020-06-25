@@ -1,13 +1,38 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap');
+/*
+색테마
+빨강 : #ed1a44
+파랑 : #4695fa
+민트 : #39ddba
+갈색 : #c2a66c
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+*/ 
+
+body {
+  margin: 8px;
+  font-family: 'Nanum Gothic', sans-serif;
+} 
+nav{
+  background: #ed1a44;  
+}
+nav li{
+  list-style: none; 
+  padding : 10px;  
+}
+nav ul{
+  margin : 0 auto; 
+  padding : 0; 
+  display:flex; 
+  justify-content: space-around;
+  align-items: center;
+}
+nav li a {  
+  color : white; 
+}
+a{
+  text-decoration: none; 
+}
+@keyframes fadein {
+  from { opacity: 0; transform: translateY(10px);}
+  to   { opacity: 1; transform: translateY(0px);}
 }
