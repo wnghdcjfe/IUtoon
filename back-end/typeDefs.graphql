@@ -11,4 +11,5 @@ type Song {
 
 type Query{
     test: String!
+    popularSong: [Song]
 }
