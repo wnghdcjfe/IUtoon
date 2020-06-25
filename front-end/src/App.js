@@ -8,10 +8,22 @@ import { Helmet } from 'react-helmet-async';
 import TopPage from './pages/TopPage';
 import SongPage from './pages/SongPage';
 import AlbumPage from './pages/AlbumPage'; 
+import Header from './pages/HeaderPage'; 
 const App = () =>{
     return (
       <Router>
       <div>
+      <Switch>
+          <Route path="/" exact> 
+            <Header type="TOP" img= "7"/>
+          </Route>
+          <Route path="/@:songname">
+            <Header type="song" img= "7"/> 
+          </Route>
+          <Route path="/album">
+            <Header type="album" img= "7"/> 
+          </Route>
+        </Switch>
         <nav>
           <ul>
             <li>
