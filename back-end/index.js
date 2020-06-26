@@ -20,10 +20,14 @@ async function start(){
     )
 
     const db = client.db()
+
     const server = new ApolloServer({
         typeDefs,
         resolvers,
-        context: async() => db
+        context: async() => {
+            return {db}
+        }
+        
     })
     server.applyMiddleware({ app })
     app.get('/playground',expressPlayground({ endpoint: '/graphql'}))

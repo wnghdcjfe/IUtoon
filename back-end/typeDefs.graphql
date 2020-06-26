@@ -6,7 +6,7 @@ type Song {
     seeCount: String
     lyrics: String
     album: String
-    date: DateTime 
+    date: String
     id: Int
     albumInfo: String
 }
@@ -14,6 +14,6 @@ type Song {
 type Query{
     test: String!
     popularSong: [Song]
-    titleSong(title:String): [Song]
-    idSong(id:Int): [Song]
+    titleSong(title:String): Song
+    idSong(id:Int): Song
 }
