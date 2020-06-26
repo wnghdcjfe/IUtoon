@@ -12,4 +12,6 @@ type Song {
 type Query{
     test: String!
     popularSong: [Song]
+    titleSong(title:String): [Song]
+    idSong(id:Int): [Song]
 }
