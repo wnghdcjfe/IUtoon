@@ -5,6 +5,9 @@
     "main": "index.js",
     "dependencies": {
         "apollo-server-express": "^2.15.0",
+        "csv2json": "^2.0.2",
+        "csvjson-csv2json": "^5.0.6",
+        "csvtojson": "^2.0.10",
         "dotenv": "^8.2.0",
         "express": "^4.17.1",
         "fs": "0.0.1-security",
