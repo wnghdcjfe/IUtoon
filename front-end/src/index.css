@@ -14,7 +14,11 @@ body {
 } 
 nav{
   background: #ed1a44;  
-}
+  position: sticky; 
+  top:52px;  
+  z-index: 3; 
+} 
+
 nav li{
   list-style: none; 
   padding : 10px;  

@@ -11,9 +11,11 @@ const CropBox = styled.div`
   z-index:-999; 
   img{
     position:absolute; 
-    top:-60px;  
-    width: 100%;
+    height: calc(100% + 60px);
+    width: 100%; 
+    top:-60px;   
     left: 0;  
+
   }
 `;
 const HeaderBox = styled.div`
@@ -45,7 +47,7 @@ const headerPage = ({type, img}) => {
   return (
     <> 
       <CropBox>
-        <img src={require(`../img/${img}.jpg`)} />
+        <img src={require(`../img/${img}`)} />
       </CropBox> 
       <HeaderBox>
         <h1>{title}</h1>

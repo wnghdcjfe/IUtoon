@@ -19,3 +19,12 @@ album
 date
 albumImg
 ```
+
+### song 
+```
+name
+album
+date
+albumImg
+```
+태그 추가 예정
