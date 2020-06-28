@@ -19,3 +19,16 @@ album
 date
 albumImg
 ```
+
+### song 
+```
+name
+album
+date
+albumImg
+```
+태그 추가 예정
+
+### .env
+.env 파일은 back-end폴더에 넣으면 된다. 
+.env파일의 형식은 다음과 같다. 

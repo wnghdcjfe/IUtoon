@@ -8,7 +8,6 @@ require('dotenv').config()
 const resolvers = require('./resolvers')
 const typeDefs = readFileSync('./typeDefs.graphql', 'utf-8')
 async function start(){
-
     const app = express()
 
     const client = await MongoClient.connect(
@@ -31,7 +30,7 @@ async function start(){
     })
     server.applyMiddleware({ app })
     app.get('/playground',expressPlayground({ endpoint: '/graphql'}))
-    app.listen({ port : 4444}, ()=> console.log(`running server on http://localhost:4444${server.graphqlPath}`))
+    app.listen({ port : 12010}, ()=> console.log(`running server on http://localhost:12010${server.graphqlPath}`))
 }
 
 start()
