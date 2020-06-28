@@ -22,24 +22,7 @@ async function start(){
     )
 
     const db = client.db()
-
-    for(let i = 0; i<140; i++){
-        if(json[i]){
-            const info=[{
-                id:json[i].Id,
-                title:json[i].Title,
-                url:json[i].Url,
-                seeCount:json[i].Seecount,
-                lyrics:json[i].Lyrics,
-                album:json[i].Album,
-                date:json[i].Date,
-                albumInfo:json[i].Album_info
-            }]
-            await db.collection('Song').insertMany(info)
-            console.log("up" + i)
-        }
-    }
-    
+    await db.collection('Song').insertMany(json)
 }
 
 start()
