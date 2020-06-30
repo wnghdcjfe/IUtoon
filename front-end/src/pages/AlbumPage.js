@@ -2,6 +2,8 @@ import React from 'react';
 
 import { Link } from 'react-router-dom'; 
 import styled from 'styled-components'; 
+import { Query } from 'react-apollo'
+import { GET_ALL_ALBUMLIST } from '../App' 
 const SongInfo = styled.div`
   h1, p{
     color:black; 
@@ -184,11 +186,16 @@ const TopPage = () => {
   return (
     <GridContainer>
     <div className="main"> 
-      {albumList.map((album, idx) =>(
-          <Link className="album" to={`/@${album.link}`} key={idx}> 
-            {album.name} 
-          </Link> 
-      ))}  
+      <Query query = {GET_ALL_ALBUMLIST}>
+        {({loading, data}) => loading ?
+            <p>loading...</p> :
+            data.albumList.map((album, idx) =>(
+              <Link className="album" to={`/@${album._id}`} key={idx} alt={album.desc}> 
+                {album.name} 
+              </Link> 
+          ))
+        } 
+      </Query> 
     </div>
     <div className="sidebar">  
       {topSongList.map((song, idx) =>(

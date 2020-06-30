@@ -1,14 +1,16 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { 
   BrowserRouter as Router,
   Switch,
   Route,
   Link } from 'react-router-dom';  
+import {withApollo} from 'react-apollo';
 import TopPage from './pages/TopPage';
 import SongPage from './pages/SongPage';
 import AlbumPage from './pages/AlbumPage'; 
 import Header from './pages/HeaderPage';   
 import styled from 'styled-components'; 
+import { gql } from 'apollo-boost';
 
 const Label = styled.label` 
 display: inline-block; 
@@ -66,9 +68,41 @@ width: 100%;
 text-align: right;
 background: rgba(255, 255, 255, 0.5); 
 `
+export const GET_ALL_ALBUMLIST = gql`
+  query allAlbumList {
+    name
+    desc
+    _id
+  }
+`
+export const GET_ALBUM_SONG = gql`
+  query allAlbumSongList {
+    name
+    album
+    date
+    albumImg 
+  }
+` 
+
+export const GET_ALBUM_SONG_NAME = gql`
+  query song {
+    id
+    url
+    title
+    seecount
+    lyrics
+    album
+    date
+    album_info 
+  }
+`
+
 const headerImgList = ["1.gif", "7.jpg"]; 
 const set_img = (list) => list[~~(Math.random() * list.length)]
-const App = () =>{
+const App = ({client}) =>{
+    useEffect(()=>{
+
+    }, [])
     return (
       <>
       <Router>  
@@ -132,4 +166,4 @@ const App = () =>{
  
     )
 }  
-export default App; 
+export default withApollo(App); 
