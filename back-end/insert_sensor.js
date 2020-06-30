@@ -6,7 +6,6 @@ const csv2json = require('./models/csv2json')
 
 const csv = fs.readFileSync("./models/IU.csv", {encoding: 'utf-8'})
 
-
 const json = csv2json(csv, {parseNumbers: true});
 
 const { MongoClient } = require('mongodb')

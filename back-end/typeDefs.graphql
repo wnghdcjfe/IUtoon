@@ -1,7 +1,7 @@
 scalar DateTime
 
 type Song {
-    title: String!
+    title: String
     url: String
     seeCount: String
     lyrics: String
@@ -11,9 +11,22 @@ type Song {
     albumInfo: String
 }
 
+type MiniSong{
+    name: String
+    date: String
+
+}
+
+type AlbumDesc{
+    name: String
+    desc: String
+    date: String
+}
 type Query{
     test: String!
-    popularSong: [Song]
+    popularSong: [Song]!
     titleSong(title:String): Song
     idSong(id:Int): Song
+    allSong: [Song]
+    allAlbumList: [AlbumDesc]
 }
