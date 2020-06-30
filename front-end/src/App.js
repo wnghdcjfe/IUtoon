@@ -55,44 +55,66 @@ const HeaderSearchBox = styled.header`
 position: fixed;
 padding: 5px; 
 box-sizing : border-box; 
-top: 0;
-left: 0; 
+left:0;
+right:0;
+margin-left:auto;
+margin-right:auto; 
+max-width: 375px;
+top: 0; 
 z-index: 3;
 width: 100%;
 text-align: right;
 background: rgba(255, 255, 255, 0.5); 
 `
+const headerImgList = ["1.gif", "7.jpg"]; 
+const set_img = (list) => list[~~(Math.random() * list.length)]
 const App = () =>{
     return (
       <>
-      <Router> 
-        <HeaderSearchBox>
-          <Label>
-            <input type="text" id="inpt_search" /> 
-          </Label>
-        </HeaderSearchBox> 
+      <Router>  
         <Switch>
           <Route path="/" exact> 
-            <Header type="TOP" img= "1.gif"/>
+
+            <HeaderSearchBox>
+              <Label>
+                <input type="text" id="inpt_search" /> 
+              </Label>
+            </HeaderSearchBox> 
+            <Header type="TOP" img={set_img(headerImgList)}/> 
+            <nav>
+              <ul>
+                <li>
+                  <Link to="/">TOP</Link>
+                </li>
+                <li>
+                  <Link to="/album">앨범</Link>
+                </li> 
+              </ul>
+            </nav> 
+          </Route>
+
+          <Route path="/album"> 
+            <HeaderSearchBox>
+              <Label>
+                <input type="text" id="inpt_search" /> 
+              </Label>
+            </HeaderSearchBox> 
+            <Header type="album" img={set_img(headerImgList)}/>  
+            <nav>
+              <ul>
+                <li>
+                  <Link to="/">TOP</Link>
+                </li>
+                <li>
+                  <Link to="/album">앨범</Link>
+                </li> 
+              </ul>
+            </nav> 
           </Route>
           <Route path="/@:songname">
-            <Header type="song" img= "7"/> 
-          </Route>
-          <Route path="/album">
-            <Header type="album" img= "7.jpg"/> 
-          </Route>
-        </Switch>  
-          <nav>
-            <ul>
-              <li>
-                <Link to="/">TOP</Link>
-              </li>
-              <li>
-                <Link to="/album">앨범</Link>
-              </li> 
-            </ul>
-          </nav>   
-      <div> 
+            <Header type="song" img={set_img(headerImgList)}/> 
+          </Route> 
+        </Switch>   
         <Switch>
           <Route path="/" exact>
             <TopPage />
@@ -103,8 +125,7 @@ const App = () =>{
           <Route path="/album">
             <AlbumPage />
           </Route>
-        </Switch>
-      </div> 
+        </Switch> 
     </Router>
 
     </>

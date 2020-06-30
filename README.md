@@ -32,3 +32,20 @@ albumImg
 ### .env
 .env 파일은 back-end폴더에 넣으면 된다. 
 .env파일의 형식은 다음과 같다. 
+
+### 필요한 쿼리
+#### 1. 앨범전체 리스트 : 1 ~ 12집
+[{"name" : "1집", "desc" : "1집 Dreamer", "_id" : ""}, ...]
+
+#### 2. 앨범당 리스트 : 예를 들어 1집의 경우, 여러가지 음악들에 대한 정보
+album/_id
+[{
+    name
+    album
+    date
+    albumImg,  
+    id
+}]
+
+#### 3. song/id
+전체다

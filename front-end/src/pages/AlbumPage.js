@@ -56,97 +56,97 @@ const topSongList = [
     "name" : "밤편지", 
     "album" : "1집", 
     "date" : "2017. 4. 21.", 
-    "albumImg" : 7
+    "albumImg" : "7.jpg"
   }, {
     "name" : "밤편지", 
     "album" : "1집", 
     "date" : "2017. 4. 21.", 
-    "albumImg" : 7
+    "albumImg" : "7.jpg"
   }, {
     "name" : "밤편지", 
     "album" : "1집", 
     "date" : "2017. 4. 21.", 
-    "albumImg" : 7
+    "albumImg" : "7.jpg"
   }, {
     "name" : "밤편지", 
     "album" : "1집", 
     "date" : "2017. 4. 21.", 
-    "albumImg" : 7
+    "albumImg" : "7.jpg"
   }, {
     "name" : "밤편지", 
     "album" : "1집", 
     "date" : "2017. 4. 21.", 
-    "albumImg" : 7
+    "albumImg" : "7.jpg"
   }, {
     "name" : "밤편지", 
     "album" : "1집", 
     "date" : "2017. 4. 21.", 
-    "albumImg" : 7
+    "albumImg" : "7.jpg"
   }, {
     "name" : "밤편지", 
     "album" : "1집", 
     "date" : "2017. 4. 21.", 
-    "albumImg" : 7
+    "albumImg" : "7.jpg"
   }, {
     "name" : "밤편지", 
     "album" : "1집", 
     "date" : "2017. 4. 21.", 
-    "albumImg" : 7
+    "albumImg" : "7.jpg"
   }, {
     "name" : "밤편지", 
     "album" : "1집", 
     "date" : "2017. 4. 21.", 
-    "albumImg" : 7
+    "albumImg" : "7.jpg"
   }, {
     "name" : "밤편지", 
     "album" : "1집", 
     "date" : "2017. 4. 21.", 
-    "albumImg" : 7
+    "albumImg" : "7.jpg"
   }, {
     "name" : "밤편지", 
     "album" : "1집", 
     "date" : "2017. 4. 21.", 
-    "albumImg" : 7
+    "albumImg" : "7.jpg"
   }, {
     "name" : "밤편지", 
     "album" : "1집", 
     "date" : "2017. 4. 21.", 
-    "albumImg" : 7
+    "albumImg" : "7.jpg"
   }, {
     "name" : "밤편지", 
     "album" : "1집", 
     "date" : "2017. 4. 21.", 
-    "albumImg" : 7
+    "albumImg" : "7.jpg"
   }, {
     "name" : "밤편지", 
     "album" : "1집", 
     "date" : "2017. 4. 21.", 
-    "albumImg" : 7
+    "albumImg" : "7.jpg"
   }, {
     "name" : "밤편지", 
     "album" : "1집", 
     "date" : "2017. 4. 21.", 
-    "albumImg" : 7
+    "albumImg" : "7.jpg"
   }, {
     "name" : "밤편지", 
     "album" : "1집", 
     "date" : "2017. 4. 21.", 
-    "albumImg" : 7
+    "albumImg" : "7.jpg"
   }, {
     "name" : "밤편지", 
     "album" : "1집", 
     "date" : "2017. 4. 21.", 
-    "albumImg" : 7
+    "albumImg" : "7.jpg"
   }, {
     "name" : "밤편지", 
     "album" : "1집", 
     "date" : "2017. 4. 21.", 
-    "albumImg" : 7
+    "albumImg" : "7.jpg"
   }, {
     "name" : "밤편지", 
     "album" : "1집", 
     "date" : "2017. 4. 21.", 
-    "albumImg" : 7
+    "albumImg" : "7.jpg"
   }, 
 ]
 const albumList = [
@@ -197,7 +197,7 @@ const TopPage = () => {
               <h1>{song.name}</h1> 
               <p>{song.album}</p> 
               <time>{song.date}</time> 
-              <img src = {require(`../img/${song.albumImg}.jpg`)}></img> 
+              <img src = {require(`../img/${song.albumImg}`)}></img> 
             </SongInfo> 
           </Link> 
       ))} 
