@@ -107,8 +107,7 @@ const App = ({client}) =>{
       <>
       <Router>  
         <Switch>
-          <Route path="/" exact> 
-
+          <Route path="/" exact>  
             <HeaderSearchBox>
               <Label>
                 <input type="text" id="inpt_search" /> 
@@ -121,12 +120,11 @@ const App = ({client}) =>{
                   <Link to="/">TOP</Link>
                 </li>
                 <li>
-                  <Link to="/album">앨범</Link>
+                  <Link to="/album/1집">앨범</Link>
                 </li> 
               </ul>
             </nav> 
-          </Route>
-
+          </Route> 
           <Route path="/album"> 
             <HeaderSearchBox>
               <Label>
@@ -140,7 +138,7 @@ const App = ({client}) =>{
                   <Link to="/">TOP</Link>
                 </li>
                 <li>
-                  <Link to="/album">앨범</Link>
+                  <Link to="/album/1집">앨범</Link>
                 </li> 
               </ul>
             </nav> 
@@ -156,7 +154,7 @@ const App = ({client}) =>{
           <Route path="/@:songname">
             <SongPage />
           </Route>
-          <Route path="/album">
+          <Route path="/album/:albumname">
             <AlbumPage />
           </Route>
         </Switch> 
