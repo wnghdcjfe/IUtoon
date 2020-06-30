@@ -5,30 +5,54 @@
 # url : http://아이유툰.com
 
 # 개발자 
-주홍철(프리랜서), 남승원(선린고1)
+주홍철(그날 본 꽃의 이름을), 남승원(우린 아직도 모른다.)
 
 # 참고링크
  - https://brunch.co.kr/@kakao-it/279
- - https://twitter.com/allofiu
+ - https://twitter.com/allofiu 
 
-## 스키마
-### popularSong - 10 limit
-```
-name
-album
-date
-albumImg
-```
+## 쿼리 
 
-### song 
-```
-name
-album
-date
-albumImg
-```
-태그 추가 예정
+```js
+`
+// 앨범 1집, 2집.. 이런식으로 나오게 하는 것 왼쪽 사이드바
+export const GET_ALL_ALBUMLIST = gql`
+  query allAlbumList {
+    name
+    desc
+    albumInfo
+  }
+`
+//앨범에 해당하는 곡 정보들. 예를 들어 1집에 대한 곡들이 다 나와야 함. 
+export const GET_ALBUM_SONG = gql`
+  query allAlbumSongList {
+    name
+    album
+    date
+    albumImg 
+  }
+` 
 
-### .env
-.env 파일은 back-end폴더에 넣으면 된다. 
-.env파일의 형식은 다음과 같다. 
+// 곡
+export const GET_SONG = gql`
+  query song {
+    id
+    url
+    title
+    seecount
+    lyrics
+    album
+    date
+    albumInfo 
+  }
+`
+//인기있는 음악 limit 10 까지 줘서 seecount 내림차순 limit 10
+export const GET_POPULAR_SONG = gql`
+  query song {
+    name
+    album
+    date
+    albumImg
+  }
+`
+```

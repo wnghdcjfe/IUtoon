@@ -23,9 +23,11 @@ const HeaderBox = styled.div`
   h1{
     padding-top: 100px; 
     color: white; 
+    padding-left: 10px;
   }
   p{
     color: white; 
+    padding-left: 10px;
   }
 `
 const textMap = {

@@ -1,5 +1,7 @@
-import React from 'react'; 
+import React, {useEffect} from 'react'; 
 import styled from 'styled-components';
+import { Query } from 'react-apollo' 
+
 
 const songList = [
   {
@@ -81,7 +83,12 @@ const TopsongHeader = styled.p`
     right: 0px;
   }
 `
+
+
 const TopPage = () => {
+  useEffect(() =>{
+
+  }, [])
   return (
       <>
         <TopsongHeader><span>노래 TOP</span>06.26일 기준</TopsongHeader>  

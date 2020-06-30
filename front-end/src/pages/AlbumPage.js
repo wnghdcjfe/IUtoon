@@ -1,7 +1,9 @@
 import React from 'react'; 
 
-import { Link } from 'react-router-dom'; 
+import { Link, useParams } from 'react-router-dom'; 
 import styled from 'styled-components'; 
+import { Query } from 'react-apollo'
+import { GET_ALL_ALBUMLIST, GET_ALBUM_SONG } from '../App'  
 const SongInfo = styled.div`
   h1, p{
     color:black; 
@@ -56,97 +58,97 @@ const topSongList = [
     "name" : "밤편지", 
     "album" : "1집", 
     "date" : "2017. 4. 21.", 
-    "albumImg" : 7
+    "albumImg" : "7.jpg"
   }, {
     "name" : "밤편지", 
     "album" : "1집", 
     "date" : "2017. 4. 21.", 
-    "albumImg" : 7
+    "albumImg" : "7.jpg"
   }, {
     "name" : "밤편지", 
     "album" : "1집", 
     "date" : "2017. 4. 21.", 
-    "albumImg" : 7
+    "albumImg" : "7.jpg"
   }, {
     "name" : "밤편지", 
     "album" : "1집", 
     "date" : "2017. 4. 21.", 
-    "albumImg" : 7
+    "albumImg" : "7.jpg"
   }, {
     "name" : "밤편지", 
     "album" : "1집", 
     "date" : "2017. 4. 21.", 
-    "albumImg" : 7
+    "albumImg" : "7.jpg"
   }, {
     "name" : "밤편지", 
     "album" : "1집", 
     "date" : "2017. 4. 21.", 
-    "albumImg" : 7
+    "albumImg" : "7.jpg"
   }, {
     "name" : "밤편지", 
     "album" : "1집", 
     "date" : "2017. 4. 21.", 
-    "albumImg" : 7
+    "albumImg" : "7.jpg"
   }, {
     "name" : "밤편지", 
     "album" : "1집", 
     "date" : "2017. 4. 21.", 
-    "albumImg" : 7
+    "albumImg" : "7.jpg"
   }, {
     "name" : "밤편지", 
     "album" : "1집", 
     "date" : "2017. 4. 21.", 
-    "albumImg" : 7
+    "albumImg" : "7.jpg"
   }, {
     "name" : "밤편지", 
     "album" : "1집", 
     "date" : "2017. 4. 21.", 
-    "albumImg" : 7
+    "albumImg" : "7.jpg"
   }, {
     "name" : "밤편지", 
     "album" : "1집", 
     "date" : "2017. 4. 21.", 
-    "albumImg" : 7
+    "albumImg" : "7.jpg"
   }, {
     "name" : "밤편지", 
     "album" : "1집", 
     "date" : "2017. 4. 21.", 
-    "albumImg" : 7
+    "albumImg" : "7.jpg"
   }, {
     "name" : "밤편지", 
     "album" : "1집", 
     "date" : "2017. 4. 21.", 
-    "albumImg" : 7
+    "albumImg" : "7.jpg"
   }, {
     "name" : "밤편지", 
     "album" : "1집", 
     "date" : "2017. 4. 21.", 
-    "albumImg" : 7
+    "albumImg" : "7.jpg"
   }, {
     "name" : "밤편지", 
     "album" : "1집", 
     "date" : "2017. 4. 21.", 
-    "albumImg" : 7
+    "albumImg" : "7.jpg"
   }, {
     "name" : "밤편지", 
     "album" : "1집", 
     "date" : "2017. 4. 21.", 
-    "albumImg" : 7
+    "albumImg" : "7.jpg"
   }, {
     "name" : "밤편지", 
     "album" : "1집", 
     "date" : "2017. 4. 21.", 
-    "albumImg" : 7
+    "albumImg" : "7.jpg"
   }, {
     "name" : "밤편지", 
     "album" : "1집", 
     "date" : "2017. 4. 21.", 
-    "albumImg" : 7
+    "albumImg" : "7.jpg"
   }, {
     "name" : "밤편지", 
     "album" : "1집", 
     "date" : "2017. 4. 21.", 
-    "albumImg" : 7
+    "albumImg" : "7.jpg"
   }, 
 ]
 const albumList = [
@@ -181,26 +183,37 @@ const albumList = [
 ]
 
 const TopPage = () => {
+  let { albumname } = useParams(); 
   return (
     <GridContainer>
     <div className="main"> 
-      {albumList.map((album, idx) =>(
-          <Link className="album" to={`/@${album.link}`} key={idx}> 
-            {album.name} 
-          </Link> 
-      ))}  
+      <Query query = {GET_ALL_ALBUMLIST}>
+        {({loading, data}) => loading ?
+            <p>loading...</p> :
+            data.albumList.map((album, idx) =>(
+              <Link className="album" to={`/@${album._id}`} key={idx} alt={album.desc}> 
+                {album.name} 
+              </Link> 
+          ))
+        } 
+      </Query> 
     </div>
-    <div className="sidebar">  
-      {topSongList.map((song, idx) =>(
-          <Link className="song" to={`/@${song.name}`} key={idx}> 
-            <SongInfo>
-              <h1>{song.name}</h1> 
-              <p>{song.album}</p> 
-              <time>{song.date}</time> 
-              <img src = {require(`../img/${song.albumImg}.jpg`)}></img> 
-            </SongInfo> 
-          </Link> 
-      ))} 
+    <div className="sidebar">   
+      <Query query = {GET_ALBUM_SONG} variables = {{albumname}}>
+        {({loading, data}) => loading ?
+            <p>loading...</p> :
+            data.map((song, idx) =>(
+              <Link className="song" to={`/@${song.name}`} key={idx}> 
+                <SongInfo>
+                  <h1>{song.name}</h1> 
+                  <p>{song.album}</p> 
+                  <time>{song.date}</time> 
+                  <img src = {require(`../img/${song.albumImg}`)}></img> 
+                </SongInfo> 
+              </Link> 
+          ))
+        } 
+      </Query>  
     </div> 
     </GridContainer>  
   );

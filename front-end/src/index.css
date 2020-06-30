@@ -9,9 +9,13 @@
 */ 
 
 body {
-  margin: 8px;
+  max-width: 375px;
+  margin: 8px auto; 
   font-family: 'Nanum Gothic', sans-serif;
 } 
+#root{
+  position: relative;
+}
 nav{
   background: #ed1a44;  
   position: sticky; 
