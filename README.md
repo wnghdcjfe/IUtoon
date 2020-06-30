@@ -49,3 +49,36 @@ album/_id
 
 #### 3. song/id
 전체다
+
+
+```js
+`
+export const GET_ALL_ALBUMLIST = gql`
+  query allAlbumList {
+    name
+    desc
+    _id
+  }
+`
+export const GET_ALBUM_SONG = gql`
+  query allAlbumSongList {
+    name
+    album
+    date
+    albumImg 
+  }
+` 
+
+export const GET_ALBUM_SONG_NAME = gql`
+  query song {
+    id
+    url
+    title
+    seecount
+    lyrics
+    album
+    date
+    album_info 
+  }
+`
+```

@@ -19,8 +19,7 @@ async function start(){
             useUnifiedTopology: true,
             useNewUrlParser : true,
         }
-    )
-
+    ) 
     const db = client.db()
     await db.collection('Song').insertMany(json)
 }
