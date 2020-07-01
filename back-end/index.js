@@ -28,7 +28,7 @@ async function start(){
     })
     server.applyMiddleware({ app })
     app.get('/playground',expressPlayground({ endpoint: '/graphql'}))
-    app.listen({ port : 12010}, ()=> console.log(`running server on http://localhost:12010${server.graphqlPath}`))
+    app.listen({ port : 4444}, ()=> console.log(`running server on http://localhost:4444${server.graphqlPath}`))
 }
 
 start()
