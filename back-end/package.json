@@ -14,6 +14,7 @@
         "graphql": "^15.1.0",
         "graphql-playground-middleware-express": "^1.7.18",
         "mongodb": "^3.5.9",
-        "nodemon": "^2.0.4"
+        "nodemon": "^2.0.4",
+        "resize-image": "^0.1.0"
     }
 }

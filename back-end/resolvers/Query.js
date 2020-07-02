@@ -1,6 +1,6 @@
 const { ObjectID } = require('mongodb');
 const { BreakingChangeType } = require('graphql');
-
+const resizeImage = require('resize-image')
 const change = (x) => {
     let see = String(x),a = "",b = "",cnt = 0
     for(let j=see.length-1; j>=0; j--){
@@ -11,6 +11,10 @@ const change = (x) => {
     for(let j=a.length-1; j>=0; j--) b += a[j]
     return b
 }
+
+const setImgPath = (from, to, type) => `http://localhost:12010/${(Math.floor( Math.random() * from)+to)}.${type}`
+
+
 module.exports = {
     popularSong: async (parent,args,{ db }) => {
         const db_1 = await db.collection('Song').find().sort({"seeCount":-1}).limit(10).toArray();
@@ -46,8 +50,8 @@ module.exports = {
             date:db_1.date,
             id:args.id,
             albumInfo:db_1.albumInfo,
-            img:"http://localhost:12010/" + (Math.floor( jbRandom * 10)+10) + ".png"
-        }
+            img:setImgPath(10, 20, "png")
+         }
         return ret
     },
     allSong: async (parent,args,{ db }) => db.collection('Song').find().toArray(),
@@ -77,7 +81,7 @@ module.exports = {
                     },
                     date:db_1[i].date,
                     id: db_1[i].id,
-                    img:"http://localhost:12010/" + (Math.floor( jbRandom * 10)+10) + ".png"
+                    img:setImgPath(10, 20, "png")
                 })
             }
             else{
@@ -93,7 +97,7 @@ module.exports = {
                     },
                     date:db_1[i].date,
                     id:db_1[i].id,
-                    img:"http://localhost:12010/" + (Math.floor( jbRandom * 10)+10) + ".png"
+                    img:setImgPath(10, 20, "png")
                 })
              }
         }
