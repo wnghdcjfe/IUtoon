@@ -24,7 +24,7 @@ const SongPage = () => {
                 <h1>{data.song.title}</h1>
                 <p>{data.song.date}</p>
                 <p>{data.song.albumInfo}</p>
-                <p>조회수 : {data.seeCount}</p>
+                <p>조회수 : {data.song.seeCount}회</p>
                 <p><span>#아름다운</span></p>
                 <p>
                   {data.song.lyrics ? line(data.song.lyrics) : ""}
