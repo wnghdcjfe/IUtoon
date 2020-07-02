@@ -4,7 +4,7 @@ const { BreakingChangeType } = require('graphql');
 module.exports = {
     popularSong: async (parent,args,{ db }) => {
         let jbRandom = Math.random();
-        const db_1 = await db.collection('Song').find().sort({"Seecount":-1}).limit(10).toArray();
+        const db_1 = await db.collection('Song').find().sort({"seeCount":-1}).limit(10).toArray();
         let ret = [];
         console.log(db_1)
         for(let i=0; i<db_1.length; i++){
