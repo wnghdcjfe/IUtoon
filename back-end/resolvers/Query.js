@@ -15,7 +15,7 @@ module.exports = {
                 lyrics:db_1[i].lyrics,
                 album:db_1[i].album,
                 date:db_1[i].date,
-                id:args.id,
+                id:db_1[i].id,
                 albumInfo:db_1[i].albumInfo,
                 img:"http://localhost:12010/" + (Math.floor( jbRandom * 10)+10) + ".png"
             })
