@@ -15,7 +15,6 @@ module.exports = {
     popularSong: async (parent,args,{ db }) => {
         const db_1 = await db.collection('Song').find().sort({"seeCount":-1}).limit(10).toArray();
         let ret = [];
-        console.log(db_1)
         for(let i=0; i<db_1.length; i++){
             let jbRandom = Math.random();
             
