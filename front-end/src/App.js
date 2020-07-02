@@ -68,34 +68,7 @@ width: 100%;
 text-align: right;
 background: rgba(255, 255, 255, 0.5); 
 `
-export const GET_ALL_ALBUMLIST = gql`
-  query allAlbumList {
-    name
-    desc
-    _id
-  }
-`
-export const GET_ALBUM_SONG = gql`
-  query allAlbumSongList {
-    name
-    album
-    date
-    albumImg 
-  }
-` 
 
-export const GET_ALBUM_SONG_NAME = gql`
-  query song {
-    id
-    url
-    title
-    seecount
-    lyrics
-    album
-    date
-    album_info 
-  }
-`
 export const GET_POPULAR_SONG = gql`
   query{
     popularSong{
@@ -107,6 +80,46 @@ export const GET_POPULAR_SONG = gql`
     }
   }
 `  
+
+export const GET_ALL_ALBUMLIST = gql`
+  query {
+    allAlbumList{
+      name
+      desc  
+    } 
+  }
+`   
+ 
+export const GET_ALBUM_SONG = gql` 
+  query allAlbumSongList($name : String!){
+    allAlbumSongList(name : $name){
+      name
+      img
+      album{
+        name
+        desc
+        img
+      }
+      date 
+    } 
+  } 
+` 
+
+export const GET_SONG_BY_NAME = gql`
+  query song ($name : String!){
+    song(name : $name){ 
+      title
+      url
+      seeCount
+      lyrics
+      album
+      date
+      id
+      albumInfo
+      img 
+    } 
+  }
+` 
                 
 const headerImgList = ["1.gif", "7.jpg"]; 
 const set_img = (list) => list[~~(Math.random() * list.length)]

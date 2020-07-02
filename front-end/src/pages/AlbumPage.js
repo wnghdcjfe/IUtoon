@@ -183,32 +183,37 @@ const albumList = [
 ]
 
 const TopPage = () => {
-  let { albumname } = useParams(); 
+  let { albumname } = useParams();  
+  const obj = {
+    "name" : albumname
+  }
   return (
-    <GridContainer>
+    <GridContainer> 
     <div className="main"> 
-      <Query query = {GET_ALL_ALBUMLIST}>
-        {({loading, data}) => loading ?
-            <p>loading...</p> :
-            data.albumList.map((album, idx) =>(
-              <Link className="album" to={`/@${album._id}`} key={idx} alt={album.desc}> 
+      <Query query={GET_ALL_ALBUMLIST}>
+        {({loading, data}) => 
+        { 
+          return loading ?
+            <p>loading...</p> : 
+            data.allAlbumList.map((album, idx) =>(
+              <Link className="album" to={`/album/${album.name}`} key={idx} alt={album.desc}> 
                 {album.name} 
               </Link> 
           ))
-        } 
+        }} 
       </Query> 
     </div>
-    <div className="sidebar">   
-      <Query query = {GET_ALBUM_SONG} variables = {{albumname}}>
-        {({loading, data}) => loading ?
-            <p>loading...</p> :
-            data.map((song, idx) =>(
+    <div className="sidebar">    
+      <Query query = {GET_ALBUM_SONG} variables = {obj}>
+        {({loading, data}) =>  loading ?
+            <p>loading...</p> : 
+            data.allAlbumSongList.map((song, idx) =>(
               <Link className="song" to={`/@${song.name}`} key={idx}> 
                 <SongInfo>
                   <h1>{song.name}</h1> 
-                  <p>{song.album}</p> 
+                  <p>{song.album.name}</p> 
                   <time>{song.date}</time> 
-                  <img src = {require(`../img/${song.albumImg}`)}></img> 
+                  <img src = {song.img}></img> 
                 </SongInfo> 
               </Link> 
           ))
