@@ -12,6 +12,13 @@ const change = (x) => {
     return b
 }
 
+const enbed = (x) => {
+    let url = x
+    let a = url.split("https://youtu.be/")
+    let ret = "https://youtube.com/" + 'embed/' + a[1]; 
+    return ret
+}
+
 const setImgPath = (from, to, type) => `http://localhost:12010/${(Math.floor( Math.random() * from)+to)}.${type}`
 
 
@@ -24,7 +31,7 @@ module.exports = {
             
             ret.push({
                 title:db_1[i].title,
-                url:db_1[i].url,
+                url:enbed(db_1[i].url),
                 seeCount:change(db_1[i].seeCount),
                 lyrics:db_1[i].lyrics,
                 album:db_1[i].album,
@@ -43,7 +50,7 @@ module.exports = {
         let jbRandom = Math.random();
         ret = {
             title:db_1.title,
-            url:db_1.url,
+            url:enbed(db_1.url),
             seeCount:change(db_1.seeCount),
             lyrics:db_1.lyrics,
             album:db_1.album,
