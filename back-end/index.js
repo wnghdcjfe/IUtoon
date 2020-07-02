@@ -3,6 +3,7 @@ const express = require('express')
 const expressPlayground = require('graphql-playground-middleware-express').default
 const { readFileSync } = require('fs')
 const { MongoClient } = require('mongodb')
+const path = require('path')
 require('dotenv').config()
 
 const resolvers = require('./resolvers')
@@ -27,8 +28,9 @@ async function start(){
         
     })
     server.applyMiddleware({ app })
+    app.use(express.static(path.join(__dirname, 'IU-Image')))
     app.get('/playground',expressPlayground({ endpoint: '/graphql'}))
-    app.listen({ port : 4444}, ()=> console.log(`running server on http://localhost:4444${server.graphqlPath}`))
+    app.listen({ port : 12010}, ()=> console.log(`running server on http://localhost:12010${server.graphqlPath}`))
 }
 
 start()
