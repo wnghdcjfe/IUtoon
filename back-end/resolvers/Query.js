@@ -1,6 +1,16 @@
 const { ObjectID } = require('mongodb');
 const { BreakingChangeType } = require('graphql');
 
+const change = (x) => {
+    let see = String(x),a = "",b = "",cnt = 0
+    for(let j=see.length-1; j>=0; j--){
+        a+= see[j]
+        cnt++;
+        if(cnt%3 == 0 && j) a+=","
+    } 
+    for(let j=a.length-1; j>=0; j--) b += a[j]
+    return b
+}
 module.exports = {
     popularSong: async (parent,args,{ db }) => {
         const db_1 = await db.collection('Song').find().sort({"seeCount":-1}).limit(10).toArray();
@@ -8,10 +18,11 @@ module.exports = {
         console.log(db_1)
         for(let i=0; i<db_1.length; i++){
             let jbRandom = Math.random();
+            
             ret.push({
                 title:db_1[i].title,
                 url:db_1[i].url,
-                seeCount:db_1[i].seeCount,
+                seeCount:change(db_1[i].seeCount),
                 lyrics:db_1[i].lyrics,
                 album:db_1[i].album,
                 date:db_1[i].date,
@@ -30,7 +41,7 @@ module.exports = {
         ret = {
             title:db_1.title,
             url:db_1.url,
-            seeCount:db_1.seeCount,
+            seeCount:change(db_1.seeCount),
             lyrics:db_1.lyrics,
             album:db_1.album,
             date:db_1.date,
