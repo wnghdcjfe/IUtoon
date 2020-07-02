@@ -3,11 +3,11 @@ const { BreakingChangeType } = require('graphql');
 
 module.exports = {
     popularSong: async (parent,args,{ db }) => {
-        let jbRandom = Math.random();
         const db_1 = await db.collection('Song').find().sort({"seeCount":-1}).limit(10).toArray();
         let ret = [];
         console.log(db_1)
         for(let i=0; i<db_1.length; i++){
+            let jbRandom = Math.random();
             ret.push({
                 title:db_1[i].title,
                 url:db_1[i].url,
@@ -25,8 +25,8 @@ module.exports = {
     titleSong: async (parent,args,{ db } ) => db.collection('Song').findOne({title:args.title}),
     song: async (parent,args,{ db } ) => {
         let ret =  {}
-        let jbRandom = Math.random();
         const db_1 = await db.collection('Song').findOne({title:args.name})
+        let jbRandom = Math.random();
         ret = {
             title:db_1.title,
             url:db_1.url,
@@ -44,9 +44,9 @@ module.exports = {
     allAlbumSongList: async(parent,args,{ db }) => {
         const db_1 = await db.collection('Song').find().toArray()
         let ret = []
-        let jbRandom = Math.random();
         for(let i=0; i<db_1.length; i++){
             const reg = /\d+\집/g
+            let jbRandom = Math.random();
             const titleName = db_1[i].albumInfo
             if(db_1[i].id>=100){
                 let arrname = ""
