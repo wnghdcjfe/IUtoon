@@ -1,9 +1,11 @@
 import React from 'react';  
-import { Query } from 'react-apollo'  
-const line = data => data.split('\n').map( line => (<span>{line}<br/></span>)); 
+import { Query } from 'react-apollo'   
+import { GET_ALBUM_SONG_NAME } from '../App'  
 import { 
   useParams
 } from "react-router-dom";
+
+const line = data => data.split('\n').map( line => (<span>{line}<br/></span>)); 
 const SongPage = () => { 
   let { songname } = useParams();
   return (

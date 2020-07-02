@@ -17,7 +17,7 @@ module.exports = {
                 date:db_1[i].date,
                 id:args.id,
                 albumInfo:db_1[i].albumInfo,
-                img:"back-end/IU-Image/" + (Math.floor( jbRandom * 10)+10) + ".png"
+                img:"http://localhost:12010/" + (Math.floor( jbRandom * 10)+10) + ".png"
             })
         }
         return ret
@@ -36,7 +36,7 @@ module.exports = {
             date:db_1.date,
             id:args.id,
             albumInfo:db_1.albumInfo,
-            img:"back-end/IU-Image/" + (Math.floor( jbRandom * 10)+10) + ".png"
+            img:"http://localhost:12010/" + (Math.floor( jbRandom * 10)+10) + ".png"
         }
         return ret
     },
@@ -63,11 +63,11 @@ module.exports = {
                         name:arrname,
                         desc:titleName,
                         date:db_1[i].date,
-                        img:"back-end/IU-Image/" + args.name + ".jpeg"
+                        img:"http://localhost:12010/" + args.name + ".jpeg"
                     },
                     date:db_1[i].date,
                     id: db_1[i].id,
-                    img:"back-end/IU-Image/" + (Math.floor( jbRandom * 10)+10) + ".png"
+                    img:"http://localhost:12010/" + (Math.floor( jbRandom * 10)+10) + ".png"
                 })
             }
             else{
@@ -79,11 +79,11 @@ module.exports = {
                         name:b[0],
                         desc:titleName,
                         date:db_1[i].date,
-                        img:"back-end/IU-Image/" + args.name + ".jpeg"
+                        img:"http://localhost:12010/" + args.name + ".jpeg"
                     },
                     date:db_1[i].date,
                     id:db_1[i].id,
-                    img:"back-end/IU-Image"/ + (Math.floor( jbRandom * 10)+10) + ".png"
+                    img:"http://localhost:12010/" + (Math.floor( jbRandom * 10)+10) + ".png"
                 })
              }
         }
@@ -111,7 +111,7 @@ module.exports = {
                         name:names,
                         desc:nameData,
                         date:db_1[i].date,
-                        img:"back-end/IU-Image/" + names + ".jpeg"
+                        img:"http://localhost:12010/" + names + ".jpeg"
                     })
                 }
             } 
@@ -123,7 +123,7 @@ module.exports = {
                     name:b[0],
                     desc:nameData,
                     date:db_1[i].date,
-                    img:"back-end/IU-Image/" + b[0] + ".jpg"  
+                    img:"http://localhost:12010/" + b[0] + ".jpg"  
                 }) 
             }
         }

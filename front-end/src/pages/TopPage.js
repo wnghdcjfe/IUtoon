@@ -1,5 +1,6 @@
 import React, {useEffect} from 'react'; 
 import styled from 'styled-components';
+import {GET_POPULAR_SONG} from '../App'
 import { Query } from 'react-apollo' 
 
 
@@ -49,7 +50,7 @@ const TopSong = styled.div`
     position: relative; 
   } 
   background-image: url(${props => { 
-    return require("../img/" + props.back)
+    return (props.back)
   }});  
   height: 100px;  
   text-align: center; 
@@ -91,15 +92,28 @@ const TopPage = () => {
   }, [])
   return (
       <>
-        <TopsongHeader><span>노래 TOP</span>06.26일 기준</TopsongHeader>  
-        {songList.map((e, idx) => (
-          <TopSong key={idx} back={e.backImg}>
-              <span>{idx} 순위 {e.seecount}</span> 
-              <img src={require(`../img/${e.thumbImg}`)}></img> 
-              <p>{e.name}</p> 
-          </TopSong> 
-         ))
-         }
+        <TopsongHeader><span>노래 TOP</span>멘마의 마음 기준</TopsongHeader>  
+        <Query query = {GET_POPULAR_SONG}>
+          {({loading, data}) => {
+            console.log(data)
+            return loading ?
+              <p>loading...</p> :
+              (
+                <>
+                {
+                  data.popularSong.map((e, idx) => (
+                    <TopSong key={idx} back={e.img}>
+                        <span>{idx} 순위 {e.seeCount}</span> 
+                        {/* <img src={require(`../img/${e.thumbImg}`)}></img>  */}
+                        <img src={require(`../img/test_1.png`)}></img> 
+                        <p>{e.name}</p> 
+                    </TopSong> 
+                  ))
+                }
+                </>
+              ) 
+          }} 
+        </Query>   
       </> 
   );
 };

@@ -21,6 +21,9 @@ async function start(){
     ) 
     const db = client.db()
     await db.collection('Song').insertMany(json)
+    console.log(`
+        정상적으로 DB에 삽입이 완료되었습니다.
+    `)
 }
 
 start()

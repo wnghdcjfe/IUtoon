@@ -96,7 +96,18 @@ export const GET_ALBUM_SONG_NAME = gql`
     album_info 
   }
 `
-
+export const GET_POPULAR_SONG = gql`
+  query{
+    popularSong{
+      id 
+      title
+      seeCount
+      albumInfo
+      img 
+    }
+  }
+`  
+                
 const headerImgList = ["1.gif", "7.jpg"]; 
 const set_img = (list) => list[~~(Math.random() * list.length)]
 const App = ({client}) =>{
