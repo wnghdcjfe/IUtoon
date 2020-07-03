@@ -57,7 +57,7 @@ module.exports = {
             date:db_1.date,
             id:args.id,
             albumInfo:db_1.albumInfo,
-            img:setImgPath(10, 20, "png")
+            img:setImgPath(10, 10, "png")
          }
         return ret
     },
@@ -88,7 +88,7 @@ module.exports = {
                     },
                     date:db_1[i].date,
                     id: db_1[i].id,
-                    img:setImgPath(10, 20, "png")
+                    img:setImgPath(10, 10, "png")
                 })
             }
             else{
@@ -104,7 +104,7 @@ module.exports = {
                     },
                     date:db_1[i].date,
                     id:db_1[i].id,
-                    img:setImgPath(10, 20, "png")
+                    img:setImgPath(10, 10, "png")
                 })
              }
         }
