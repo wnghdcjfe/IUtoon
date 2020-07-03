@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap');
+@import url(https://fonts.googleapis.com/earlyaccess/nanummyeongjo.css); 
+.nanummyeongjo{ font-family: 'Nanum Myeongjo', serif; }
 /*
 색테마
 빨강 : #ed1a44
@@ -7,7 +9,11 @@
 갈색 : #c2a66c
 
 */ 
-
+iframe{
+  border: none;
+  border-radius: 10px;
+  margin-top:40px;
+} 
 body {
   max-width: 375px;
   margin: 8px auto; 

@@ -1,32 +1,7 @@
 import React, {useEffect} from 'react'; 
 import styled from 'styled-components';
 import {GET_POPULAR_SONG} from '../App'
-import { Query } from 'react-apollo' 
-
-
-const songList = [
-  {
-    "name" : "밤편지", 
-    "seecount" : 123,  
-    "thumbImg" : "test_1.png", 
-    "backImg" : "7.jpg"
-  }, {
-    "name" : "밤편지", 
-    "seecount" : 123,  
-    "thumbImg" : "test_1.png", 
-    "backImg" : "1.gif"
-  },{
-    "name" : "밤편지", 
-    "seecount" : 123,  
-    "thumbImg" : "test_1.png", 
-    "backImg" : "7.jpg"
-  },{
-    "name" : "밤편지", 
-    "seecount" : 123,  
-    "thumbImg" : "test_1.png", 
-    "backImg" : "7.jpg"
-  },
-]
+import { Query } from 'react-apollo'  
 const TopSong = styled.div`
   span{ 
     z-index: 2;
@@ -74,7 +49,7 @@ const TopsongHeader = styled.p`
   &::after{
     content: ''; 
     display: block; 
-    width: 50%; 
+    width: 40%; 
     height: 5px;
     position: absolute; 
     height: 2px; 
@@ -92,21 +67,20 @@ const TopPage = () => {
   }, [])
   return (
       <>
-        <TopsongHeader><span>노래 TOP</span>멘마의 마음 기준</TopsongHeader>  
+        <TopsongHeader><span>노래 TOP</span>유애나 마음 기준</TopsongHeader>  
         <Query query = {GET_POPULAR_SONG}>
-          {({loading, data}) => {
-            console.log(data)
+          {({loading, data}) => { 
             return loading ?
               <p>loading...</p> :
               (
                 <>
                 {
-                  data.popularSong.map((e, idx) => (
+                  data.popularSong.map((e, idx) => ( 
                     <TopSong key={idx} back={e.img}>
-                        <span>{idx} 순위 {e.seeCount}</span> 
+                        <span>{idx + 1} 순위 {e.seeCount}회</span> 
                         {/* <img src={require(`../img/${e.thumbImg}`)}></img>  */}
                         <img src={require(`../img/test_1.png`)}></img> 
-                        <p>{e.name}</p> 
+                        <p>{e.title}</p> 
                     </TopSong> 
                   ))
                 }
