@@ -9,7 +9,11 @@
 갈색 : #c2a66c
 
 */ 
-
+iframe{
+  border: none;
+  border-radius: 10px;
+  margin-top:40px;
+} 
 body {
   max-width: 375px;
   margin: 8px auto; 

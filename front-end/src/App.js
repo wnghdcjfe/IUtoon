@@ -1,16 +1,17 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import { 
   BrowserRouter as Router,
   Switch,
   Route,
-  Link } from 'react-router-dom';  
+  Link, useHistory } from 'react-router-dom';  
 import {withApollo} from 'react-apollo';
 import TopPage from './pages/TopPage';
 import SongPage from './pages/SongPage';
 import AlbumPage from './pages/AlbumPage'; 
 import Header from './pages/HeaderPage';   
 import styled from 'styled-components'; 
-import { gql } from 'apollo-boost';
+import { gql } from 'apollo-boost'; 
+import _ from 'lodash'
 
 const Label = styled.label` 
 display: inline-block; 
@@ -123,7 +124,19 @@ export const GET_SONG_BY_NAME = gql`
                 
 const headerImgList = ["1.gif", "7.jpg"]; 
 const set_img = (list) => list[~~(Math.random() * list.length)]
+let debouncedFn;    
 const App = ({client}) =>{
+    const [inputValue, setInput] = useState("")  
+    let history = useHistory(); 
+    console.log(history) // undefined가 뜸.
+    const handleInput = (e) =>{ 
+      setInput(e);      
+      if (!debouncedFn) {  
+        debouncedFn =  _.debounce(() => {  
+          this.props.history.push('/@' + e)  
+        }, 1000);
+      }else debouncedFn()
+    }
     useEffect(()=>{
 
     }, [])
@@ -133,8 +146,8 @@ const App = ({client}) =>{
         <Switch>
           <Route path="/" exact>  
             <HeaderSearchBox>
-              <Label>
-                <input type="text" id="inpt_search" /> 
+              <Label> 
+                <input type="text" id="inpt_search" value={inputValue} onChange={handleInput}/>  
               </Label>
             </HeaderSearchBox> 
             <Header type="TOP" img={set_img(headerImgList)}/> 
@@ -152,7 +165,7 @@ const App = ({client}) =>{
           <Route path="/album"> 
             <HeaderSearchBox>
               <Label>
-                <input type="text" id="inpt_search" /> 
+              <input type="text" id="inpt_search" value={inputValue} onChange={e=> handleInput(e.target.value)}/>  
               </Label>
             </HeaderSearchBox> 
             <Header type="album" img={set_img(headerImgList)}/>  
