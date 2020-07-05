@@ -38,7 +38,7 @@ module.exports = {
                 date:db_1[i].date,
                 id:db_1[i].id,
                 albumInfo:db_1[i].albumInfo,
-                img:"http://localhost:12010/" + (Math.floor( jbRandom * 10)+10) + ".png"
+                img:setImgPath(10, 10, "png")
             })
         }
         return ret
