@@ -16,7 +16,7 @@ const change = (x) => {
 const enbed = (x) => {
     let url = x
     let a = url.split("https://youtu.be/")
-    let ret = "https://youtube.com/" + 'embed/' + a[1]; 
+    let ret = "https://youtube.com/embed/" + a[1]; 
     return ret
 }
 
@@ -30,7 +30,7 @@ const songDefault = ( collection ) => {
         date:collection.date,
         id:collection.id,
         albumInfo:collection.albumInfo,
-        img:setImgPath(10, 9, "png")
+        img:setImgPath(11, 20, "png")
     }
     return ret
 }
@@ -39,7 +39,7 @@ const albumDefault = ( collection ) => {
     let names = ""
     if(collection.id >= 100){
         const strArray = collection.albumInfo.split("")
-        let index = strArray.findIndex((item,idx) => {return item == "글"})
+        let index = strArray.findIndex((item,idx) => {return item === "글"})
         for(let i=index+2; i<strArray.length; i++) names+=strArray[i]
     }
     let reg = /\d+\집/g,b = []
@@ -58,7 +58,7 @@ const albumDefault = ( collection ) => {
     return ret
 }
 
-const setImgPath = (from, to, type) => `http://localhost:12010/${(Math.floor( Math.random() * from)+to)+1}.${type}`
+const setImgPath = (from, to, type) => `http://localhost:12010/${(~~( Math.random() * from)+to)}.${type}`
 
 module.exports = {
     popularSong: async (parent,args,{ db }) => {
@@ -94,7 +94,7 @@ module.exports = {
                 },
                 date:db_1[i].date,
                 id:db_1[i].id,
-                img:setImgPath(10, 9, "png")
+                img:setImgPath(11, 20, "png")
             })
         }
         return ret
