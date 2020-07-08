@@ -58,7 +58,7 @@ const albumDefault = ( collection ) => {
     return ret
 }
 
-const setImgPath = (from, to, type) => `http://localhost:12010/${(~~( Math.random() * from)+to)}.${type}`
+const setImgPath = (from, to, type) => `http://localhost:12010/${(~~( Math.random() * (to - from + 1) + from)) }.${type}`
 
 module.exports = {
     popularSong: async (parent,args,{ db }) => {
