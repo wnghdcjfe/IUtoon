@@ -1,6 +1,7 @@
 const { ObjectID } = require('mongodb');
 const { BreakingChangeType } = require('graphql');
 const resizeImage = require('resize-image')
+const set = new Set(); 
 const change = (x) => {
     let see = String(x),a = "",b = "",cnt = 0
     for(let j=see.length-1; j>=0; j--){
@@ -19,36 +20,53 @@ const enbed = (x) => {
     return ret
 }
 
-const songDefault = ( db ) => {
+const songDefault = ( collection ) => {
     let ret = {
-        title:db.title,
-        url:enbed(db.url),
-        seeCount:change(db.seeCount),
-        lyrics:db.lyrics,  
-        album:db.album,
-        date:db.date,
-        id:db.id,
-        albumInfo:db.albumInfo,
-        img:setImgPath(10, 10, "png")
+        title:collection.title,
+        url:enbed(collection.url),
+        seeCount:change(collection.seeCount),
+        lyrics:collection.lyrics,  
+        album:collection.album,
+        date:collection.date,
+        id:collection.id,
+        albumInfo:collection.albumInfo,
+        img:setImgPath(10, 9, "png")
     }
     return ret
 }
 
-const setImgPath = (from, to, type) => `http://localhost:12010/${(Math.floor( Math.random() * from)+to)}.${type}`
+const albumDefault = ( collection ) => {
+    let names = ""
+    if(collection.id >= 100){
+        const strArray = collection.albumInfo.split("")
+        let index = strArray.findIndex((item,idx) => {return item == "글"})
+        for(let i=index+2; i<strArray.length; i++) names+=strArray[i]
+    }
+    let reg = /\d+\집/g,b = []
+    if(collection.id < 100) b = reg.exec(collection.albumInfo)
+    if(b[0] === null) return null
+    let col_name = collection.id >= 100 ? names : b[0]
+    if(set.has(col_name)) return null
+    let imgLink = collection.id >= 100 ? (`http://localhost:12010/${col_name}.jpeg`) : (`http://localhost:12010/${col_name}.jpg`)
+    set.add(col_name)
+    let ret = {
+        name:col_name,
+        desc:collection.albumInfo,
+        date:collection.date,
+        img:imgLink
+    }
+    return ret
+}
+
+const setImgPath = (from, to, type) => `http://localhost:12010/${(Math.floor( Math.random() * from)+to)+1}.${type}`
 
 module.exports = {
     popularSong: async (parent,args,{ db }) => {
-        const db_1 = await db.collection('Song').find().sort({"seeCount":-1}).limit(10).toArray();
-        let ret = [];
-        for(let i=0; i<db_1.length; i++) ret.push(songDefault(db_1[i]))
-        return ret
+        const db_1 = await db.collection('Song').find().sort({"seeCount":-1}).limit(10).toArray(); 
+        return db_1.map(x => songDefault(x))
     },
     titleSong: async (parent,args,{ db } ) => db.collection('Song').findOne({title:args.title}),
-    song: async (parent,args,{ db } ) => {
-        const db_1 = await db.collection('Song').findOne({title:args.name})
-        let ret = songDefault(db_1);
-        return ret
-    },
+    song: async (parent,args,{ db } ) => songDefault(await db.collection('Song').findOne({title:args.name})),
     allSong: async (parent,args,{ db }) => db.collection('Song').find().toArray(),
     allAlbumSongList: async(parent,args,{ db }) => {
         const db_1 = await db.collection('Song').find().toArray()
@@ -76,45 +94,14 @@ module.exports = {
                 },
                 date:db_1[i].date,
                 id:db_1[i].id,
-                img:setImgPath(10, 10, "png")
+                img:setImgPath(10, 9, "png")
             })
         }
         return ret
     },
     allAlbumList: async (parent,args,{ db }) => {
         const db_1 = await db.collection('Song').find().toArray();
-        const s = new Set(); 
-        let ret = []
-        for(let i=0; i < db_1.length; i++){ 
-            const reg = /\d+\집/g
-            const nameData = db_1[i].albumInfo
-            if(db_1[i].id >= 100){
-                let names="";
-                const strArray = nameData.split("");
-                let index = strArray.findIndex((item,idx) => {return item == "글"});
-                for(let i=index+2; i<strArray.length; i++) names+=strArray[i];
-                if(!s.has(names)){
-                    s.add(names)
-                    ret.push({
-                        name:names,
-                        desc:nameData,
-                        date:db_1[i].date,
-                        img:"http://localhost:12010/" + names + ".jpeg"
-                    })
-                }
-            } 
-            const b = reg.exec(nameData)
-            if(b === null) continue;    
-            if(!s.has(b[0])){
-                s.add(b[0])
-                ret.push({
-                    name:b[0],
-                    desc:nameData,
-                    date:db_1[i].date,
-                    img:"http://localhost:12010/" + b[0] + ".jpg"  
-                }) 
-            }
-        }
-        return ret
+        set.clear();
+        return db_1.map(x => albumDefault(x)).filter(e => e)
     }
 }

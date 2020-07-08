@@ -1,4 +1,8 @@
-let url = "https://youtu.be/d9IxdwEFk1c"
-let a = url.split("https://youtu.be/")
-let ret = "https://youtube.com/" + 'embed/' + a[1]; 
-console.log(ret) 
+let obj= {};
+let arr = [];
+for(let i = 0;i <10; i++){
+    obj.name = i;
+    arr.push(obj);
+}
+
+console.log(arr)
