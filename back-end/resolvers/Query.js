@@ -1,6 +1,5 @@
 const { ObjectID } = require('mongodb');
-const { BreakingChangeType } = require('graphql');
-const resizeImage = require('resize-image')
+
 const set = new Set();
 let getName = "" 
 const change = (x) => {
@@ -87,6 +86,8 @@ const albumSong = ( collection ) => {
 }
 
 const setImgPath = (from, to, type) => `http://localhost:12010/${(~~( Math.random() * (to - from + 1) + from)) }.${type}`
+
+
 
 module.exports = {
     popularSong: async (parent,args,{ db }) => {
