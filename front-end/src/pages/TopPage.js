@@ -1,5 +1,6 @@
-import React, {useEffect} from 'react'; 
+import React from 'react'; 
 import styled from 'styled-components';
+import { Link } from 'react-router-dom'; 
 import {GET_POPULAR_SONG} from '../App'
 import { Query } from 'react-apollo'  
 const TopSong = styled.div`
@@ -22,6 +23,7 @@ const TopSong = styled.div`
     height:120px;
     bottom: 20px; 
     z-index:2; 
+    left : 93px; 
     position: relative; 
   } 
   background-image: url(${props => { 
@@ -33,8 +35,7 @@ const TopSong = styled.div`
   margin-bottom: 57px; 
   background-attachment: fixed;
   background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  background-repeat: no-repeat; 
   width: 93%; 
 `  
 const TopsongHeader = styled.p`
@@ -61,10 +62,7 @@ const TopsongHeader = styled.p`
 `
 
 
-const TopPage = () => {
-  useEffect(() =>{
-
-  }, [])
+const TopPage = () => { 
   return (
       <>
         <TopsongHeader><span>노래 TOP</span>유애나 마음 기준</TopsongHeader>  
@@ -76,12 +74,15 @@ const TopPage = () => {
                 <>
                 {
                   data.popularSong.map((e, idx) => ( 
-                    <TopSong key={idx} back={e.img}>
+
+                  <Link to={`/@${e.title}`} key={idx}>   
+                    <TopSong back={e.img}>
                         <span>{idx + 1} 순위 {e.seeCount}회</span> 
                         {/* <img src={require(`../img/${e.thumbImg}`)}></img>  */}
                         <img src={require(`../img/test_1.png`)}></img> 
                         <p>{e.title}</p> 
-                    </TopSong> 
+                    </TopSong>  
+                  </Link>
                   ))
                 }
                 </>

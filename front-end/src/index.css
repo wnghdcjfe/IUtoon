@@ -45,6 +45,7 @@ nav li a {
 }
 a{
   text-decoration: none; 
+  color: black; 
 }
 @keyframes fadein {
   from { opacity: 0; transform: translateY(10px);}
