@@ -21,7 +21,6 @@ const enbed = (x) => {
 
 const setImgPath = (from, to, type) => `http://localhost:12010/${(Math.floor( Math.random() * from)+to)}.${type}`
 
-
 module.exports = {
     popularSong: async (parent,args,{ db }) => {
         const db_1 = await db.collection('Song').find().sort({"seeCount":-1}).limit(10).toArray();
