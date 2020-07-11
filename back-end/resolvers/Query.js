@@ -92,7 +92,7 @@ const setImgPath = (from, to, type) => `http://localhost:12010/${(~~( Math.rando
 module.exports = {
     popularSong: async (parent,args,{ db }) => {
         const db_1 = await db.collection('Song').find().sort({"seeCount":-1}).limit(10).toArray(); 
-        return db_1.map(x => songDefault(x))
+        return db_1.map(x => songDefault(x))    
     },
     titleSong: async (parent,args,{ db } ) => db.collection('Song').findOne({title:args.title}),
     song: async (parent,args,{ db } ) => songDefault(await db.collection('Song').findOne({title:args.name})),
