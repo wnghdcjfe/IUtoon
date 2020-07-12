@@ -33,6 +33,7 @@ const TopSong = styled.div`
   text-align: center; 
   margin: 0 auto;
   margin-bottom: 57px; 
+  background-size: 380px 500px; 
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat; 
@@ -65,7 +66,7 @@ const TopsongHeader = styled.p`
 const TopPage = () => { 
   return (
       <>
-        <TopsongHeader><span>노래 TOP</span>유애나 마음 기준</TopsongHeader>  
+        <TopsongHeader><span>노래 TOP</span>유투브 조회수 기준</TopsongHeader>  
         <Query query = {GET_POPULAR_SONG}>
           {({loading, data}) => { 
             return loading ?
@@ -78,8 +79,8 @@ const TopPage = () => {
                   <Link to={`/@${e.title}`} key={idx}>   
                     <TopSong back={e.img}>
                         <span>{idx + 1} 순위 {e.seeCount}회</span> 
-                        {/* <img src={require(`../img/${e.thumbImg}`)}></img>  */}
-                        <img src={require(`../img/test_1.png`)}></img> 
+                        <img src={e.thumbImg}></img> 
+                        {/* <img src={require(`../img/test_1.png`)}></img>  */}
                         <p>{e.title}</p> 
                     </TopSong>  
                   </Link>

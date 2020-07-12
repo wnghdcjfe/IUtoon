@@ -1,6 +1,40 @@
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700&display=swap');
-@import url(https://fonts.googleapis.com/earlyaccess/nanummyeongjo.css); 
-.nanummyeongjo{ font-family: 'Nanum Myeongjo', serif; }
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
+
+.montrait{
+  font-family: 'Montserrat', sans-serif;
+}
+.nanummyeongjo{
+  font-weight: lighter;
+} 
+*{
+  font-family: 'Montserrat', sans-serif;
+}
+.center{
+  text-align:center;
+}
+.m0{
+  margin-bottom:0; 
+}
+.right{
+  text-align: right;
+}
+.gray{
+  color :#aaa; 
+}
+.songWrap{
+  padding: 10px;
+  background: #39ddba;
+  border-radius: 10px;
+  color: white;
+}
+.tagWrap{
+  padding: 5px; 
+  border-bottom: .5px solid #ed1a44;
+}
+.lylic{
+  display:block; 
+  margin-bottom: 10px;
+}
 /*
 색테마
 빨강 : #ed1a44
@@ -22,12 +56,19 @@ body {
 #root{
   position: relative;
 }
-nav{
-  background: #ed1a44;  
+nav{  
+  background-size: 100% 200%;
+  background-image: linear-gradient(to bottom, #ed1a44 50%, #39ddba 50%);
+  -webkit-transition: background-position .3s; 
+  -moz-transition: background-position .3s; 
+  transition: background-position .3s; 
   position: sticky; 
   top:52px;  
-  z-index: 3; 
-} 
+  z-index: 3;  
+}  
+nav.backBlue{
+  background-position: 0 -100%; 
+}
 
 nav li{
   list-style: none; 

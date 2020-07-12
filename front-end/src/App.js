@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { 
   BrowserRouter as Router,
   Switch,
@@ -20,6 +20,7 @@ export const GET_POPULAR_SONG = gql`
       seeCount
       albumInfo
       img 
+      thumbImg
     }
   }
 `  
@@ -65,15 +66,17 @@ export const GET_SONG_BY_NAME = gql`
 ` 
                 
 const headerImgList = ["1.gif", "7.jpg"]; 
-const set_img = (list) => list[~~(Math.random() * list.length)] 
+const set_img = (list) => list[~~(Math.random() * list.length)]  
+
 const App = ({client}) =>{ 
+ 
     return (
       <>
       <Router>  
         <Switch>
           <Route path="/" exact>  
             <Search /> 
-            <Header type="TOP" img={set_img(headerImgList)}/> 
+            <Header type="TOP" img={set_img(headerImgList)} id="header"/> 
             <nav>
               <ul>
                 <li>
@@ -87,8 +90,8 @@ const App = ({client}) =>{
           </Route> 
           <Route path="/album"> 
             <Search />  
-            <Header type="album" img={set_img(headerImgList)}/>  
-            <nav>
+            <Header type="album" img={set_img(headerImgList)} id="header"/>  
+            <nav className="backBlue">
               <ul>
                 <li>
                   <Link to="/">TOP</Link>
@@ -100,7 +103,7 @@ const App = ({client}) =>{
             </nav> 
           </Route>
           <Route path="/@:songname">
-            <Header type="song" img={set_img(headerImgList)}/> 
+            <Header type="song" img={set_img(headerImgList)} id="header"/> 
           </Route> 
         </Switch>   
         <Switch>

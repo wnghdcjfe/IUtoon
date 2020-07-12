@@ -5,7 +5,7 @@ import {
   useParams
 } from "react-router-dom";
 
-const line = data => data.split('\n').map( line => (<span>{line}<br/></span>)); 
+const line = data => data.split('\n').map( line => (<span class="lylic">{line}<br/></span>)); 
 const SongPage = () => { 
   let { songname } = useParams(); 
   const obj = {
@@ -20,12 +20,12 @@ const SongPage = () => {
           else return (
             <>  
               <iframe width="100%" height="345" src={data.song.url}></iframe> 
-              <h1>{data.song.title}</h1>
-              <p>{data.song.date}</p>
-              <p>{data.song.albumInfo}</p>
-              <p>조회수 : {data.song.seeCount}회</p>
-              <p><span>#아름다운</span></p>
-              <p>
+              <h1 className="montrait center m0">{data.song.title}</h1>
+              <p className="montrait center gray">{data.song.date}</p>
+              <p className="montrait center">[ {data.song.albumInfo} ]</p>
+              <p className="montrait right">조회수 : {data.song.seeCount}회</p>
+              <p><span className="montrait tagWrap">#아름다운</span></p>
+              <p className="montrait songWrap">
                 {data.song.lyrics ? line(data.song.lyrics) : ""}
               </p>
             </> 
