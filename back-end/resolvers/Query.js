@@ -30,7 +30,8 @@ const songDefault = ( collection ) => {
         date:collection.date,
         id:collection.id,
         albumInfo:collection.albumInfo,
-        img:setImgPath(11, 20, "png")
+        img:setImgPath(11, 20, "png"),
+        thumbImg:setImgPath2(1,10,"png","p")
     }
     return ret
 }
@@ -86,7 +87,7 @@ const albumSong = ( collection ) => {
 }
 
 const setImgPath = (from, to, type) => `http://localhost:12010/${(~~( Math.random() * (to - from + 1) + from)) }.${type}`
-
+const setImgPath2 = (from, to, type, p) => `http://localhost:12010/${p}${(~~( Math.random() * (to - from + 1) + from)) }.${type}`
 
 
 module.exports = {
