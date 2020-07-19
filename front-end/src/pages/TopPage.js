@@ -33,7 +33,7 @@ const TopSong = styled.div`
   text-align: center; 
   margin: 0 auto;
   margin-bottom: 57px; 
-  background-size: 380px 500px; 
+  background-size: 380px 700px; 
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat; 
@@ -51,7 +51,7 @@ const TopsongHeader = styled.p`
   &::after{
     content: ''; 
     display: block; 
-    width: 40%; 
+    width: 35%; 
     height: 5px;
     position: absolute; 
     height: 2px; 
@@ -74,13 +74,11 @@ const TopPage = () => {
               (
                 <>
                 {
-                  data.popularSong.map((e, idx) => ( 
-
+                  data.popularSong.map((e, idx) => (  
                   <Link to={`/@${e.title}`} key={idx}>   
                     <TopSong back={e.img}>
                         <span>{idx + 1} 순위 {e.seeCount}회</span> 
-                        <img src={e.thumbImg}></img> 
-                        {/* <img src={require(`../img/test_1.png`)}></img>  */}
+                        <img src={e.thumbImg}></img>  
                         <p>{e.title}</p> 
                     </TopSong>  
                   </Link>
