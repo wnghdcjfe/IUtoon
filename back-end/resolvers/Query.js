@@ -31,7 +31,8 @@ const songDefault = ( collection ) => {
         id:collection.id,
         albumInfo:collection.albumInfo,
         img:setImgPath(11, 20, "png"),
-        thumbImg:setImgPath2(1,10,"png","p")
+        thumbImg:setImgPath2(1,10,"png","p"),
+        tags:collection.tags
     }
     return ret
 }

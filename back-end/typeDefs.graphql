@@ -9,6 +9,7 @@ type Song {
     albumInfo: String
     img: String
     thumbImg:String
+    tags: [String]
 }
 
 type AlbumDesc{
