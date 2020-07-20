@@ -1,6 +1,6 @@
 const { ObjectID } = require('mongodb');
 
-const set = new Set();
+const set = new Set(),set2 = new Set();
 let getName = "" 
 const change = (x) => {
     let see = String(x),a = "",b = "",cnt = 0
@@ -87,6 +87,20 @@ const albumSong = ( collection ) => {
     return ret
 }
 
+const checkTags = ( collection,item ) => {
+    let ret = []
+    for(let i = 0; i<collection.length; i++){
+        if(!collection[i].tags) continue
+        for(let j = 0; j < collection[i].tags.length; j++){
+            if(collection[i].tags[j] == item && !set2.has(collection[i].title)){
+                set2.add(collection[i].title)
+                ret.push(collection[i])
+            }
+        }
+    }
+    return ret
+}
+
 const setImgPath = (from, to, type) => `http://localhost:12010/${(~~( Math.random() * (to - from + 1) + from)) }.${type}`
 const setImgPath2 = (from, to, type, p) => `http://localhost:12010/${p}${(~~( Math.random() * (to - from + 1) + from)) }.${type}`
 
@@ -105,8 +119,18 @@ module.exports = {
         return db_1.map(x => albumSong(x)).filter(e => e)
     },
     allAlbumList: async (parent,args,{ db }) => {
-        const db_1 = await db.collection('Song').find().toArray();
-        set.clear();
+        const db_1 = await db.collection('Song').find().toArray()
+        set.clear()
         return db_1.map(x => albumDefault(x)).filter(e => e)
+    },
+    getSongTags: async(parent,args,{ db }) => {
+        const db_1 = await db.collection('Song').find().toArray()
+        set2.clear()
+        let ret = []
+        args.tags.forEach(item => {
+            let k  = checkTags(db_1,item)
+            for(let i=0; i<k.length; i++) ret.push(k[i])
+        });
+        return ret;
     }
 }
