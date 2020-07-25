@@ -9,7 +9,7 @@ require('dotenv').config()
 const resolvers = require('./resolvers')
 const typeDefs = readFileSync('./typeDefs.graphql', 'utf-8')
 async function start(){
-    const app = express() 
+    const app = express()  
     const client = await MongoClient.connect(
         process.env.DB_HOST,
         {
