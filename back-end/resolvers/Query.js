@@ -1,6 +1,6 @@
 const { ObjectID } = require('mongodb');
 
-const set = new Set(),set2 = new Set();
+const set = new Set(),set2 = new Set(),set3 = new Set();
 let getName = "" 
 const change = (x) => {
     let see = String(x),a = "",b = "",cnt = 0
@@ -149,5 +149,14 @@ module.exports = {
         });
         return ret;
     },
-
+    allTagList: async(parent,args,{ db }) => {
+        const db_1 = await db.collection('Song').find().toArray(),arr = []
+        set3.clear()
+        for(let i=0; i<db_1.length; i++){
+            if(!db_1[i].tags) continue
+            for(let j=0; j<db_1[i].tags.length; j++) if(!set3.has(db_1[i].tags[j])) set3.add(db_1[i].tags[j])
+        }
+        for(let it of set3) arr.push(it)
+        return arr
+    }
 }

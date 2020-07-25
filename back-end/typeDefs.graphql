@@ -35,4 +35,5 @@ type Query{
     allAlbumList: [AlbumDesc]
     allAlbumSongList(name:String): [AlbumInfo]
     getSongTags(tags:[String]): [Song]
+    allTagList: [String]
 }
