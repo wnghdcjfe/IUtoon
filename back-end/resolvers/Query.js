@@ -22,9 +22,8 @@ const enbed = (x) => {
 
 const songDefault = async( db,collection ) => {
     const arr = [],brr = []
-    for(let i = 0; i < collection.tags.length; i++){
+    if(collection.tags) for(let i = 0; i < collection.tags.length; i++){
         let info = await db.collection('Tags').findOne({tag:collection.tags[i]})
-
         arr.push({
             tag : info.tag,
             cnt : info.count
@@ -124,7 +123,7 @@ const setImgPath2 = (from, to, type, p) => `http://localhost:12010/${p}${(~~( Ma
 module.exports = {
     popularSong: async (parent,args,{ db }) => {
         const db_1 = await db.collection('Song').find().sort({"seeCount":-1}).limit(10).toArray(); 
-        return db_1.map(x => songDefault(x))    
+        return db_1.map(x => songDefault(db,x))    
     },
     titleSong: async (parent,args,{ db } ) => db.collection('Song').findOne({title:args.title}),
     song: async (parent,args,{ db } ) => songDefault(db,await db.collection('Song').findOne({title:args.name})),
