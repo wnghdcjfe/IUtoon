@@ -14,13 +14,14 @@ const TagPage = () => {
         {({loading, data}) =>  loading ?
             <p>loading...</p> : 
             data.getSongTags.map((song, idx) =>(
-              <Link className="song" to={`/tag/${song.name}`} key={idx}> 
-                <SongInfo>
-                  <h1>{song.name}</h1> 
+              <Link className="song" to={`/tag/${song.name}`} key={idx}>  
+              <div>
+              <h1>{song.name}</h1> 
                   <p>{song.album.name}</p> 
                   <time>{song.date}</time> 
                   <img src = {song.img}></img> 
-                </SongInfo> 
+              </div>
+                   
               </Link> 
           ))
         } 

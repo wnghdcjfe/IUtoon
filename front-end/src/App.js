@@ -66,7 +66,7 @@ export const GET_SONG_BY_NAME = gql`
   }
 `  
 export const GET_SONGS_BY_TAGS = gql`
-  query getSongTags ($name : [String!}){
+  query getSongTags ($name : [String!]){
     getSongTags(name : $name){ 
       title
       url
