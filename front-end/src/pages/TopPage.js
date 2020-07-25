@@ -68,13 +68,13 @@ const TopPage = () => {
       <>
         <TopsongHeader><span>노래 TOP</span>유투브 조회수 기준</TopsongHeader>  
         <Query query = {GET_POPULAR_SONG}>
-          {({loading, data}) => { 
+          {({loading, data}) => {  
             return loading ?
               <p>loading...</p> :
               (
                 <>
                 {
-                  data.popularSong.map((e, idx) => (  
+                  data && data.popularSong.map((e, idx) => (  
                   <Link to={`/@${e.title}`} key={idx}>   
                     <TopSong back={e.img}>
                         <span>{idx + 1} 순위 {e.seeCount}회</span> 

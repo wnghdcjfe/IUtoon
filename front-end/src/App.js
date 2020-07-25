@@ -10,6 +10,7 @@ import SongPage from './pages/SongPage';
 import AlbumPage from './pages/AlbumPage'; 
 import Header from './pages/HeaderPage';   
 import Search from './pages/searchPage';   
+import tagPage from './pages/tagPage';   
 import { gql } from 'apollo-boost';  
  
 export const GET_POPULAR_SONG = gql`
@@ -63,8 +64,24 @@ export const GET_SONG_BY_NAME = gql`
       img 
     } 
   }
-` 
-                
+`  
+export const GET_SONGS_BY_TAGS = gql`
+  query getSongTags ($name : [String!}){
+    getSongTags(name : $name){ 
+      title
+      url
+      seeCount
+      lyrics
+      album
+      date
+      id
+      albumInfo
+      img 
+    } 
+  }
+`  
+
+ 
 const headerImgList = ["1.gif", "7.jpg"]; 
 const set_img = (list) => list[~~(Math.random() * list.length)]  
 
@@ -115,6 +132,9 @@ const App = ({client}) =>{
           </Route>
           <Route path="/album/:albumname">
             <AlbumPage />
+          </Route>
+          <Route path="/tag/:tag">
+            <tagPage />
           </Route>
         </Switch> 
     </Router>
