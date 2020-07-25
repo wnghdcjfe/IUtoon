@@ -20,7 +20,23 @@ const enbed = (x) => {
     return ret
 }
 
-const songDefault = ( collection ) => {
+const songDefault = async( db,collection ) => {
+    const arr = [],brr = []
+    for(let i = 0; i < collection.tags.length; i++){
+        let info = await db.collection('Tags').findOne({tag:collection.tags[i]})
+
+        arr.push({
+            tag : info.tag,
+            cnt : info.count
+        })
+    }
+    arr.sort(function(a,b){
+        return b['cnt'] - a['cnt'] 
+    })
+    for(let i=0; i<arr.length; i++){
+        if(i == 10) break
+        brr.push(arr[i].tag)
+    }
     let ret = {
         title:collection.title,
         url:enbed(collection.url),
@@ -32,7 +48,7 @@ const songDefault = ( collection ) => {
         albumInfo:collection.albumInfo,
         img:setImgPath(11, 20, "png"),
         thumbImg:setImgPath2(1,10,"png","p"),
-        tags:collection.tags
+        tags:brr
     }
     return ret
 }
@@ -111,7 +127,7 @@ module.exports = {
         return db_1.map(x => songDefault(x))    
     },
     titleSong: async (parent,args,{ db } ) => db.collection('Song').findOne({title:args.title}),
-    song: async (parent,args,{ db } ) => songDefault(await db.collection('Song').findOne({title:args.name})),
+    song: async (parent,args,{ db } ) => songDefault(db,await db.collection('Song').findOne({title:args.name})),
     allSong: async (parent,args,{ db }) => db.collection('Song').find().toArray(),
     allAlbumSongList: async(parent,args,{ db }) => {
         const db_1 = await db.collection('Song').find().toArray()
@@ -132,5 +148,6 @@ module.exports = {
             for(let i=0; i<k.length; i++) ret.push(k[i])
         });
         return ret;
-    }
+    },
+
 }

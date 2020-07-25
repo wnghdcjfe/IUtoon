@@ -1,8 +1,8 @@
 var fs = require('fs');
-let data = fs.readFileSync('/Users/erolf0123/Downloads/song_meta.json','utf8');
+let data = fs.readFileSync('../models/song_meta.json','utf8');
 const ans = JSON.parse(data)
 const csv2json = require('../models/csv2json')
-let date = fs.readFileSync('/Users/erolf0123/Downloads/test.json')
+let date = fs.readFileSync('../models/test.json','utf-8')
 date = JSON.parse(date)
 const csv = fs.readFileSync("../models/IU.csv", {encoding: 'utf-8'})
 const { MongoClient } = require('mongodb')
