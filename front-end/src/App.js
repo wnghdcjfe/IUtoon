@@ -62,6 +62,7 @@ export const GET_SONG_BY_NAME = gql`
       id
       albumInfo
       img 
+      tags
     } 
   }
 `  
