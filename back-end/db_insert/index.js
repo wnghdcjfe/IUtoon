@@ -1,10 +1,12 @@
 var fs = require('fs');
-let data = fs.readFileSync('../models/song_meta.json','utf8');
+const path = require('path');
+path.resolve(__dirname, '../models/song_meta.json')
+let data = fs.readFileSync(path.resolve(__dirname, '../models/song_meta.json'),'utf8');
 const ans = JSON.parse(data)
-const csv2json = require('../models/csv2json')
-let date = fs.readFileSync('../models/test.json','utf-8')
+const csv2json = require(path.resolve(__dirname, '../models/csv2json'))
+let date = fs.readFileSync(path.resolve(__dirname, '../models/test.json'),'utf-8')
 date = JSON.parse(date)
-const csv = fs.readFileSync("../models/IU.csv", {encoding: 'utf-8'})
+const csv = fs.readFileSync(path.resolve(__dirname, '../models/IU.csv'), {encoding: 'utf-8'})
 const { MongoClient } = require('mongodb')
 require('dotenv').config()
 

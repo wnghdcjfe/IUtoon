@@ -5,7 +5,8 @@ import {
   useParams
 } from "react-router-dom";
 
-const line = data => data.split('\n').map( line => (<span class="lylic">{line}<br/></span>)); 
+const line = data => data.split('\n').map( line => (<span className="lylic">{line}<br/></span>));  
+const setTag = data => data.map(e => (<span className="montrait tagWrap">#{e}</span>))
 const SongPage = () => { 
   let { songname } = useParams(); 
   const obj = {
@@ -24,7 +25,7 @@ const SongPage = () => {
               <p className="montrait center gray">{data.song.date}</p>
               <p className="montrait center">[ {data.song.albumInfo} ]</p>
               <p className="montrait right">조회수 : {data.song.seeCount}회</p>
-              <p><span className="montrait tagWrap">#아름다운</span></p>
+              <p>{setTag(data.song.tags)}</p>
               <p className="montrait songWrap">
                 {data.song.lyrics ? line(data.song.lyrics) : ""}
               </p>

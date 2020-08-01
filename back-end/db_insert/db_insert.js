@@ -8,6 +8,7 @@ require('dotenv').config()
 const map = new Map()
 const set = new Set()
 async function start(){
+    console.log(process.env.DB_HOST)
     const client = await MongoClient.connect(
         process.env.DB_HOST,
         {
@@ -33,6 +34,11 @@ async function start(){
         db.collection('Tags').insertMany(arr)
         console.log(it + "db에 업데이트 성공")
     }
+    console.log(
+        `
+            모든 곡을 업데이트 완료했습니다.
+        `
+    )
 }
 
 start()
