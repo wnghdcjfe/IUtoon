@@ -2,9 +2,9 @@
 const { ObjectID } = require('mongodb')
 require('dotenv').config()
 var fs = require('fs');
-const csv2json = require('./models/csv2json')
+const csv2json = require('../models/csv2json')
 
-const csv = fs.readFileSync("./models/IU.csv", {encoding: 'utf-8'})
+const csv = fs.readFileSync("../models/IU.csv", {encoding: 'utf-8'})
 
 const json = csv2json(csv, {parseNumbers: true});
 

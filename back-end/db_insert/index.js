@@ -13,8 +13,6 @@ let b = []
 let end = []
 const set = new Set();
 
-console.log(process.env.DB_HOST)
-
 for(let i=0; i<ans.length; i++){
     for(let j = 0; j<json.length; j++){
         if(json[j].title == ans[i].song_name && ans[i].artist_name_basket == "아이유" && !set.has(ans[i].song_name)){
@@ -42,9 +40,7 @@ for(let i = 0; i<b.length; i++){
         }
     }
 }
-console.log(1)
 async function start(){
-    console.log(2) 
     const client = await MongoClient.connect(
         process.env.DB_HOST,
         {
