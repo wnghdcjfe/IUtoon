@@ -1,5 +1,6 @@
 # 아이유툰
-안녕하세요. 아이유를 좋아하는 펜심에서 만들었습니다. 
+안녕하세요. 아이유를 좋아하는 펜심에서 만들었습니다.
+ 
 마치 다음웹툰처럼 아이유의 곡들을 쉽게 볼 수 있는 UI를 구축했습니다. 많은 이용부탁드립니다. 
 
 # 계획
@@ -13,10 +14,10 @@ http://kundol.kr
  - 프론트엔드, 코드리팩토링 : 주홍철(백수)
  - 백엔드    : 남승원(선린고1) 
 
-# 다음웹툰 UI
+# 다음웹툰 UI 
 <p align="center"> 
-  <img src="https://t1.daumcdn.net/brunch/service/user/1oU7/image/oNRBA098PAlKM5_82cAXJ5spHkA.gif" width="300">
-</p>  
+  <img src="https://raw.githubusercontent.com/wnghdcjfe/IUtoon/master/DAUMUI.gif" width="300">
+</p> 
  
 ## 구동방법
  - 백엔드 : back-end/README.md참조
