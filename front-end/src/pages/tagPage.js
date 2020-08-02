@@ -2,12 +2,12 @@ import React from 'react';
 import { Link, useParams } from 'react-router-dom'; 
 import styled from 'styled-components'; 
 import { Query } from 'react-apollo'
-import { GET_SONGS_BY_TAGS } from '../App'    
+import { GET_SONGS_BY_TAGS } from '../graphql'    
 
 const setTag = (data, nowTag) => data.map(e => {
   if(e === nowTag){
-    return (<span className="montrait tagWrap activeTag"><Link to={`/tag/${e}`}>#{e}</Link> </span>)
-  }else return (<span className="montrait tagWrap"><Link to={`/tag/${e}`}>#{e}</Link> </span>) 
+    return (<span className="tagWrap activeTag"><Link to={`/tag/${e}`}>#{e}</Link> </span>)
+  }else return (<span className="tagWrap"><Link to={`/tag/${e}`}>#{e}</Link> </span>) 
 })
 
 const Header = styled.header`

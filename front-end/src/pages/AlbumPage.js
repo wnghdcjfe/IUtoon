@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, useParams } from 'react-router-dom'; 
 import styled from 'styled-components'; 
 import { Query } from 'react-apollo'
-import { GET_ALL_ALBUMLIST, GET_ALBUM_SONG } from '../App'  
+import { GET_ALL_ALBUMLIST, GET_ALBUM_SONG } from '../graphql'  
 const SongInfo = styled.div`
   h1, p{
     color:black; 

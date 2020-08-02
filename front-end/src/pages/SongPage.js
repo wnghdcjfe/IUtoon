@@ -1,18 +1,13 @@
 import React from 'react';  
 import { Query } from 'react-apollo'   
-import { GET_SONG_BY_NAME } from '../App'  
-import {  
-  Link } from 'react-router-dom'; 
-import { 
-  useParams
-} from "react-router-dom";
+import { GET_SONG_BY_NAME } from '../graphql'   
+import {Link } from 'react-router-dom'; 
+import {useParams} from "react-router-dom"; 
 
 const line = data => data.split('\n').map( line => (<span className="lylic">{line}<br/></span>));  
- 
-const setTag = data => data.map(e => (<span className="montrait tagWrap"><Link to={`/tag/${e}`}>#{e}</Link> </span>))
+const setTag = data => data.map(e => (<span className="tagWrap"><Link to={`/tag/${e}`}>#{e}</Link> </span>))
 const SongPage = () => { 
-  let { songname } = useParams(); 
-  console.log(songname)
+  let { songname } = useParams();  
   const obj = {
     "name" : songname
   } 
@@ -25,12 +20,12 @@ const SongPage = () => {
           else return (
             <>  
               <iframe width="100%" height="345" src={data.song.url}></iframe> 
-              <h1 className="montrait center m0">{data.song.title}</h1>
-              <p className="montrait center gray">{data.song.date}</p>
-              <p className="montrait center">[ {data.song.albumInfo} ]</p>
-              <p className="montrait right">조회수 : {data.song.seeCount}회</p>
+              <h1 className="center m0">{data.song.title}</h1>
+              <p className="center gray">{data.song.date}</p>
+              <p className="center">[ {data.song.albumInfo} ]</p>
+              <p className="right">조회수 : {data.song.seeCount}회</p>
               <p>{setTag(data.song.tags)}</p>
-              <p className="montrait songWrap">
+              <p className="songWrap">
                 {data.song.lyrics ? line(data.song.lyrics) : ""}
               </p>
             </> 
