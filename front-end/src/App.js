@@ -10,89 +10,17 @@ import SongPage from './pages/SongPage';
 import AlbumPage from './pages/AlbumPage'; 
 import Header from './pages/HeaderPage';   
 import Search from './pages/SearchPage';   
-import TagPage from './pages/TagPage';   
-import { gql } from 'apollo-boost';  
- 
-export const GET_POPULAR_SONG = gql`
-  query{
-    popularSong{
-      id 
-      title
-      seeCount
-      albumInfo
-      img 
-      thumbImg
-    }
-  }
-`  
+import TagPage from './pages/TagPage';    
+import {HEADER_IMG_LIST, set_img_random} from './utils'
 
-export const GET_ALL_ALBUMLIST = gql`
-  query {
-    allAlbumList{
-      name
-      desc  
-    } 
-  }
-`   
- 
-export const GET_ALBUM_SONG = gql` 
-  query allAlbumSongList($name : String!){
-    allAlbumSongList(name : $name){
-      name
-      img
-      album{
-        name
-        desc
-        img
-      }
-      date 
-    } 
-  } 
-` 
-
-export const GET_SONG_BY_NAME = gql`
-  query song ($name : String!){
-    song(name : $name){ 
-      title
-      url
-      seeCount
-      lyrics
-      album
-      date
-      id
-      albumInfo
-      img 
-      tags
-    } 
-  }
-`  
-export const GET_SONGS_BY_TAGS = gql`
-  query getSongTags ($tags : [String!]){
-    getSongTags(tags : $tags){ 
-      title
-      album
-      url
-      seeCount 
-      date 
-      albumInfo
-      tags
-    } 
-  }
-`  
-
- 
-const headerImgList = ["1.gif", "7.jpg"]; 
-const set_img = (list) => list[~~(Math.random() * list.length)]  
-
-const App = ({client}) =>{ 
- 
+const App = ({client}) =>{  
     return (
       <>
       <Router>  
         <Switch>
           <Route path="/" exact>  
             <Search /> 
-            <Header type="TOP" img={set_img(headerImgList)} id="header"/> 
+            <Header type="TOP" img={set_img_random(HEADER_IMG_LIST)} id="header"/> 
             <nav>
               <ul>
                 <li>
@@ -106,7 +34,7 @@ const App = ({client}) =>{
           </Route> 
           <Route path="/album"> 
             <Search />  
-            <Header type="album" img={set_img(headerImgList)} id="header"/>  
+            <Header type="album" img={set_img_random(HEADER_IMG_LIST)} id="header"/>  
             <nav className="backBlue">
               <ul>
                 <li>
@@ -119,7 +47,7 @@ const App = ({client}) =>{
             </nav> 
           </Route>
           <Route path="/song/:songname">
-            <Header type="song" img={set_img(headerImgList)} id="header"/> 
+            <Header type="song" img={set_img_random(HEADER_IMG_LIST)} id="header"/> 
           </Route> 
         </Switch>   
         <Switch>

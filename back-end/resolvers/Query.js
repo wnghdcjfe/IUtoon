@@ -138,7 +138,7 @@ module.exports = {
         set.clear()
         return db_1.map(x => albumDefault(x)).filter(e => e)
     },
-    getSongTags: async(parent,args,{ db }) => {
+    songbyTag: async(parent,args,{ db }) => {
         const db_1 = await db.collection('Song').find().toArray()
         set2.clear()
         let ret = []

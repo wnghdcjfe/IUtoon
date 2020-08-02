@@ -1,19 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
-
 /*
 색테마
 빨강 : #ed1a44
 파랑 : #4695fa
 민트 : #39ddba
 갈색 : #c2a66c
+*/  
 
-*/ 
-.montrait{
-  font-family: 'Montserrat', sans-serif;
-}
-.nanummyeongjo{
-  font-weight: lighter;
-} 
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap');
+
 *{
   font-family: 'Montserrat', sans-serif;
 }
@@ -61,8 +55,7 @@ iframe{
 } 
 body { 
   max-width: 442px;
-  margin: 8px auto; 
-  font-family: 'Montserrat', sans-serif;
+  margin: 8px auto;  
 } 
 #root{
   position: relative;

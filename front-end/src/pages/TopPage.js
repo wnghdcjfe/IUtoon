@@ -1,8 +1,9 @@
 import React from 'react'; 
 import styled from 'styled-components';
 import { Link } from 'react-router-dom'; 
-import {GET_POPULAR_SONG} from '../App'
-import { Query } from 'react-apollo'  
+import { GET_POPULAR_SONG } from '../graphql'   
+import { Query } from 'react-apollo'   
+
 const TopSong = styled.div`
   span{ 
     z-index: 2;
@@ -69,8 +70,7 @@ const TopPage = () => {
         <TopsongHeader><span>노래 TOP</span>유투브 조회수 기준</TopsongHeader>  
         <Query query = {GET_POPULAR_SONG}>
           {({loading, data}) => {  
-            return loading ?
-              <p>loading...</p> :
+            return loading ?<p>로딩중입니다... </p> :
               (
                 <>
                 {
