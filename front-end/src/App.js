@@ -9,8 +9,8 @@ import TopPage from './pages/TopPage';
 import SongPage from './pages/SongPage';
 import AlbumPage from './pages/AlbumPage'; 
 import Header from './pages/HeaderPage';   
-import Search from './pages/searchPage';   
-import tagPage from './pages/tagPage';   
+import Search from './pages/SearchPage';   
+import TagPage from './pages/TagPage';   
 import { gql } from 'apollo-boost';  
  
 export const GET_POPULAR_SONG = gql`
@@ -67,17 +67,15 @@ export const GET_SONG_BY_NAME = gql`
   }
 `  
 export const GET_SONGS_BY_TAGS = gql`
-  query getSongTags ($name : [String!]){
-    getSongTags(name : $name){ 
+  query getSongTags ($tags : [String!]){
+    getSongTags(tags : $tags){ 
       title
-      url
-      seeCount
-      lyrics
       album
-      date
-      id
+      url
+      seeCount 
+      date 
       albumInfo
-      img 
+      tags
     } 
   }
 `  
@@ -120,7 +118,7 @@ const App = ({client}) =>{
               </ul>
             </nav> 
           </Route>
-          <Route path="/@:songname">
+          <Route path="/song/:songname">
             <Header type="song" img={set_img(headerImgList)} id="header"/> 
           </Route> 
         </Switch>   
@@ -128,14 +126,14 @@ const App = ({client}) =>{
           <Route path="/" exact>
             <TopPage />
           </Route>
-          <Route path="/@:songname">
+          <Route path="/song/:songname">
             <SongPage />
           </Route>
           <Route path="/album/:albumname">
             <AlbumPage />
           </Route>
           <Route path="/tag/:tag">
-            <tagPage />
+            <TagPage />
           </Route>
         </Switch> 
     </Router>

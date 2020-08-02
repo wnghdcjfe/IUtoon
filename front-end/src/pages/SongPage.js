@@ -1,14 +1,18 @@
 import React from 'react';  
 import { Query } from 'react-apollo'   
 import { GET_SONG_BY_NAME } from '../App'  
+import {  
+  Link } from 'react-router-dom'; 
 import { 
   useParams
 } from "react-router-dom";
 
 const line = data => data.split('\n').map( line => (<span className="lylic">{line}<br/></span>));  
-const setTag = data => data.map(e => (<span className="montrait tagWrap">#{e}</span>))
+ 
+const setTag = data => data.map(e => (<span className="montrait tagWrap"><Link to={`/tag/${e}`}>#{e}</Link> </span>))
 const SongPage = () => { 
   let { songname } = useParams(); 
+  console.log(songname)
   const obj = {
     "name" : songname
   } 

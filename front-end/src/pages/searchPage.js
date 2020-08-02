@@ -68,13 +68,13 @@ const SearchPage = () => {
         e.persist();        
         if (!debouncedFn) {  
           debouncedFn =  _.debounce(() => {  
-              history.push('/@' + e.target.value)  
+              history.push('/song' + e.target.value)  
           }, 3000);
         }else debouncedFn()
     }
     const handleEnter = (e) =>{
       if(e.key === 'Enter'){  
-        history.push('/@' + inputValue)
+        history.push('/song' + inputValue)
       } 
     }
     return (

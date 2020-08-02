@@ -78,7 +78,7 @@ const TopPage = () => {
         {({loading, data}) =>  loading ?
             <p>loading...</p> : 
             data.allAlbumSongList.map((song, idx) =>(
-              <Link className="song" to={`/@${song.name}`} key={idx}> 
+              <Link className="song" to={`/song/${song.name}`} key={idx}> 
                 <SongInfo>
                   <h1>{song.name}</h1> 
                   <p>{song.album.name}</p> 

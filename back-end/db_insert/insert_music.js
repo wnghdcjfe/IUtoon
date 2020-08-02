@@ -1,13 +1,14 @@
 // Node packages for file system
-const { ObjectID } = require('mongodb')
+const fs = require('fs');
+const path = require('path')
+const csv2json = require('../models/csv2json') 
+const { MongoClient } = require('mongodb')
 require('dotenv').config()
-var fs = require('fs');
-const csv2json = require('../models/csv2json')
-let data = fs.readFileSync('../models/song_meta.json','utf8');
-let date = fs.readFileSync('../models/test.json','utf-8')
+let data = fs.readFileSync(path.resolve(__dirname, '..', 'models/song_meta.json'),'utf8');
+let date = fs.readFileSync(path.resolve(__dirname, '..', 'models/test.json'),'utf-8')
 date = JSON.parse(date)
 const ans = JSON.parse(data)
-const csv = fs.readFileSync("../models/IU.csv", {encoding: 'utf-8'})
+const csv = fs.readFileSync(path.resolve(__dirname, '..', 'models/IU.csv'), {encoding: 'utf-8'})
 
 const map123 = new Map()
 const set123 = new Set()
@@ -45,8 +46,7 @@ for(let i = 0; i<b.length; i++){
         }
     }
 }
-
-const { MongoClient } = require('mongodb')
+ 
 async function start(){
 
 
@@ -80,9 +80,13 @@ async function start(){
             tag : it,
             count : map123[it]
         }]
-        db.collection('Tags').insertMany(arr)
-        console.log(it + "db에 업데이트 성공")
+        db.collection('Tags').insertMany(arr) 
     }
+    console.log(
+        `
+            모든 DB 초기화가 완료되었습니다.
+        ` 
+    )
 }
 
 start()

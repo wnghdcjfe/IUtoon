@@ -75,7 +75,7 @@ const TopPage = () => {
                 <>
                 {
                   data && data.popularSong.map((e, idx) => (  
-                  <Link to={`/@${e.title}`} key={idx}>   
+                  <Link to={`/song/${e.title}`} key={idx}>   
                     <TopSong back={e.img}>
                         <span>{idx + 1} 순위 {e.seeCount}회</span> 
                         <img src={e.thumbImg}></img>  

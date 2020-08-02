@@ -36,8 +36,19 @@
   color: white;
 }
 .tagWrap{
-  padding: 5px; 
+  padding: 5px 0px;
   border-bottom: .5px solid #ed1a44;
+  margin: 5px;
+  box-sizing: border-box;
+  display: inline-block; 
+}
+.activeTag{
+  background-color: #ed1a44; 
+  border-radius: 5px;
+  padding:6px;
+}
+.activeTag > a{
+  color: white;
 }
 .lylic{
   display:block; 
