@@ -8,6 +8,11 @@
   <img src="https://raw.githubusercontent.com/wnghdcjfe/IUtoon/develop/example.gif" width="300">
 </p> 
 
+# 프론트 메인 기술
+ - 패러랙스스크롤
+ - fadein Effect
+ - sticky CSS
+
 # 계획
  - 스타수10 이상 : SVG 및 아이유 애니메이션 구현
  - 스타수20 이상 : lSA, KNN, AutoEncoder 등을 이용한 아이유곡 IP 기반 / 컨텐츠기반 추천시스템구현
@@ -16,7 +21,7 @@
 http://kundol.kr
 
 # 담당 
- - 프론트엔드, 코드리팩토링 : 주홍철(백수)
+ - 프론트엔드, 코드리팩토링 : 주홍철(28남)
  - 백엔드    : 남승원(선린고1) 
 
 # 다음웹툰 UI 
