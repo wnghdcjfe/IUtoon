@@ -63,7 +63,7 @@ const albumDefault = ( collection ) => {
     if(b[0] === null) return null
     let col_name = collection.id >= 100 ? names : b[0]
     if(set.has(col_name)) return null
-    let imgLink = collection.id >= 100 ? (`http://localhost:80/${col_name}.jpeg`) : (`http://localhost:80/${col_name}.jpg`)
+    let imgLink = collection.id >= 100 ? (`http://kundol.kr/${col_name}.jpeg`) : (`http://kundol.kr/${col_name}.jpg`)
     set.add(col_name)
     let ret = {
         name:col_name,
@@ -93,7 +93,7 @@ const albumSong = ( collection ) => {
             names:names,
             desc:collection.albumInfo,
             date:collection.date,
-            img:`http://localhost:80/${names}.${c}`
+            img:`http://kundol.kr/${names}.${c}`
         },
         date:collection.date,
         id:collection.id,
@@ -116,8 +116,8 @@ const checkTags = ( collection,item ) => {
     return ret
 }
 
-const setImgPath = (from, to, type) => `http://localhost:80/${(~~( Math.random() * (to - from + 1) + from)) }.${type}`
-const setImgPath2 = (from, to, type, p) => `http://localhost:80/${p}${(~~( Math.random() * (to - from + 1) + from)) }.${type}`
+const setImgPath = (from, to, type) => `http://kundol.kr/${(~~( Math.random() * (to - from + 1) + from)) }.${type}`
+const setImgPath2 = (from, to, type, p) => `http://kundol.kr/${p}${(~~( Math.random() * (to - from + 1) + from)) }.${type}`
 
 
 module.exports = {
