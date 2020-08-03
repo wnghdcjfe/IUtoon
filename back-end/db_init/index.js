@@ -5,8 +5,7 @@ const { MongoClient } = require('mongodb');
 require('dotenv').config()
 let songs = fs.readFileSync(path.resolve(__dirname, '..', 'models/song_meta.json'),'utf8');
 let melon_test = fs.readFileSync(path.resolve(__dirname, '..', 'models/test.json'),'utf-8')
-const csv = fs.readFileSync(path.resolve(__dirname, '..', 'models/IU.csv'), {encoding: 'utf-8'})
-
+const csv = fs.readFileSync(path.resolve(__dirname, '..', 'models/IU.csv'), {encoding: 'utf-8'}) 
 
 const iu_json = csv2json(csv, {parseNumbers: true})
 const song_meta = JSON.parse(songs)
@@ -39,6 +38,8 @@ const id2tags = () => {
     }) 
 }
 
+const real_song_path = path.resolve(__dirname, '..', 'models/real_song.json')
+const real_tag_path = path.resolve(__dirname, '..', 'models/real_tag.json')
 const tag2count = (db) => {
     const map = new Map(),set = new Set()
     for(let i=0; i<iu_json.length; i++){
@@ -48,16 +49,18 @@ const tag2count = (db) => {
             if(!set.has(iu_json[i].tags[j])) set.add(iu_json[i].tags[j])
         }
     }
-
+    let real = [];
     for(let it of set){
         const arr = [{
             tag : it,
             count : map[it]
         }]
+        real.push(arr)
         db.collection('Tags').insertMany(arr)
     }
+    fs.writeFileSync(real_tag_path, JSON.stringify(real))
 }
-
+ 
 const start  = async() => {
 
     const client = await MongoClient.connect(
@@ -71,8 +74,11 @@ const start  = async() => {
     song2id()
     id2tags()
     tag2count(db) 
+    fs.writeFileSync(real_song_path, JSON.stringify(iu_json))
     db.collection('Song').insertMany(iu_json)
-    console.log("db reset!")
+    console.log(`
+        DB 초기화가 완료되었습니다.
+    `)
 }
 
 
