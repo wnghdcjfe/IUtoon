@@ -29,8 +29,9 @@ async function start(){
     })
     server.applyMiddleware({ app })
     app.use(express.static(path.join(__dirname, 'IU-Image')))
+    app.use(express.static(path.join(__dirname,'..','front-end', 'build')))
     app.get('/playground',expressPlayground({ endpoint: '/graphql'}))
-    app.listen({ port : 12010}, ()=> console.log(`running server on http://localhost:12010${server.graphqlPath}`))
+    app.listen({ port : 80}, ()=> console.log(`running server on http://localhost:80${server.graphqlPath}`))
 }
 
 start()

@@ -70,7 +70,7 @@ const start  = async() => {
     const db = client.db()
     song2id()
     id2tags()
-    tag2count(db)
+    tag2count(db) 
     db.collection('Song').insertMany(iu_json)
     console.log("db reset!")
 }
