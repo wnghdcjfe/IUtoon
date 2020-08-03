@@ -55,7 +55,7 @@ const TagPage = () => {
       <Query query = {GET_SONGS_BY_TAGS} variables = {obj}>
         {({loading, data}) =>  loading ?
             <p>loading...</p> : 
-            data.getSongTags.map((song, idx) =>( 
+            data.songbyTag.map((song, idx) =>( 
               <Link to={`/song/${song.title}`} key={idx}>  
                 <Content>
                     <h1>{song.title}</h1>  

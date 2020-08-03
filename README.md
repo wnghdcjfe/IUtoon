@@ -3,6 +3,11 @@
 
 마치 다음웹툰처럼 아이유의 곡들을 쉽게 볼 수 있는 UI를 구축했습니다. 많은 이용부탁드립니다. 
 
+# 구동모습
+<p align="center"> 
+  <img src="https://raw.githubusercontent.com/wnghdcjfe/IUtoon/develop/example.gif" width="300">
+</p> 
+
 # 계획
  - 스타수10 이상 : SVG 및 아이유 애니메이션 구현
  - 스타수20 이상 : lSA, KNN, AutoEncoder 등을 이용한 아이유곡 IP 기반 / 컨텐츠기반 추천시스템구현
