@@ -73,7 +73,16 @@ nav{
 nav.backBlue{
   background-position: 0 -100%; 
 }
-
+.mainWrap > p{
+  font-size: 2rem;
+  margin: 0 auto;
+  font-weight: 100;
+  margin-top: 18px;
+}
+.listItem img{
+  width: 270px;
+  height: 400px;
+}
 nav li{
   list-style: none; 
   padding : 10px;  
