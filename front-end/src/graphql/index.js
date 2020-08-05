@@ -53,8 +53,8 @@ query song ($name : String!){
 }
 `  
 export const GET_SONGS_BY_TAGS = gql`
-query songByTag ($tags : [String!]){
-  songByTag(tags : $tags){ 
+query songbyTag ($tags : [String!]){
+  songbyTag(tags : $tags){ 
     title
     album
     url

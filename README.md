@@ -1,7 +1,18 @@
 # 아이유툰
-안녕하세요. 아이유를 좋아하는 펜심에서 만들었습니다.
+안녕하세요. 아이유를 좋아하는 펜심에서 만들었습니다. 앨범별로, 태그별로 검색이 가능합니다.
 
 마치 다음웹툰처럼 아이유의 곡들을 쉽게 볼 수 있는 UI를 구축했습니다. 많은 이용부탁드립니다. 
+
+# 구동모습
+<p align="center"> 
+  <img src="https://raw.githubusercontent.com/wnghdcjfe/IUtoon/develop/example.gif" width="300">
+</p> 
+
+# 프론트 메인 기술
+ - 패러랙스스크롤
+ - fadein Effect
+ - sticky CSS
+ - debounce search
 
 # 계획
  - 스타수10 이상 : SVG 및 아이유 애니메이션 구현
@@ -11,7 +22,7 @@
 http://kundol.kr
 
 # 담당 
- - 프론트엔드, 코드리팩토링 : 주홍철(백수)
+ - 프론트엔드, 코드리팩토링 : 주홍철(큰돌)
  - 백엔드    : 남승원(선린고1) 
 
 # 다음웹툰 UI 
@@ -39,3 +50,6 @@ http://kundol.kr
 # 참고링크
  - https://brunch.co.kr/@kakao-it/279
  - https://twitter.com/allofiu 
+
+# 참고자료
+카카오아레나 음악 추천시스템 대회 태그자료 https://arena.kakao.com/
