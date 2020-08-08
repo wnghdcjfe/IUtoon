@@ -131,7 +131,11 @@ module.exports = {
     allAlbumSongList: async(parent,args,{ db }) => {
         const db_1 = await db.collection('Song').find().toArray()
         getName = args.name
-        return db_1.map(x => albumSong(x)).filter(e => e)
+        const ret = db_1.map(x => albumSong(x)).filter(e => e)
+        ret.sort(function(a,b){
+            return a.name < b.name ? -1 : a.name > b.name ? 1: 0;
+        })
+        return ret
     },
     allAlbumList: async (parent,args,{ db }) => {
         const db_1 = await db.collection('Song').find().toArray()
