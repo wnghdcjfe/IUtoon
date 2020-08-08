@@ -83,7 +83,7 @@ const TopPage = () => {
                   <h1>{song.name}</h1> 
                   <p>{song.album.name}</p> 
                   <time>{song.date}</time> 
-                  <img src = {song.img}></img> 
+                  <img src = {song.img} alt={song.name}></img> 
                 </SongInfo> 
               </Link> 
           ))

@@ -50,7 +50,7 @@ const TagPage = () => {
     <div>     
       <Header>
         <h1>TAG : #{tag}</h1>
-        <img src={require(`../img/tagheader.jpg`)} />
+        <img src={require(`../img/tagheader.jpg`)} alt="태그해더"/>
       </Header>    
       <Query query = {GET_SONGS_BY_TAGS} variables = {obj}>
         {({loading, data}) =>  loading ?

@@ -1,8 +1,9 @@
-import React from 'react'; 
+import React, {useEffect, useState} from 'react'; 
 import styled from 'styled-components';
 import { Link } from 'react-router-dom'; 
 import { GET_POPULAR_SONG } from '../graphql'   
-import { Query } from 'react-apollo'   
+import { Query} from 'react-apollo'   
+// import {useQuery } from '@apollo/client';
 
 const TopSong = styled.div`
   span{ 
@@ -35,9 +36,13 @@ const TopSong = styled.div`
   margin: 0 auto;
   margin-bottom: 57px; 
   background-size: 380px 700px; 
-  background-attachment: fixed;
-  background-position: center;
+  background-attachment: fixed; 
+  background-position: 50% ${props => {
+    return '50%;' // 스크롤 아래로 내렸을 시 버버벅 거립니다. 
+    return (50 + props.scrollH / 100).toFixed(4) + '%;'
+  }}
   background-repeat: no-repeat; 
+  transform: translateZ(0); 
   width: 93%; 
 `  
 const TopsongHeader = styled.p`
@@ -61,10 +66,16 @@ const TopsongHeader = styled.p`
     background: #aaa;
     right: 0px;
   }
-`
+` 
 
-
-const TopPage = () => { 
+const TopPage = () => {  
+  const [scroll, setScroll] = useState(window.pageYOffset); 
+  const handleScroll = () => { 
+    setScroll(window.pageYOffset);
+  }
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+  }, []); 
   return (
       <>
         <TopsongHeader><span>노래 TOP</span>유투브 조회수 기준</TopsongHeader>  
@@ -76,9 +87,9 @@ const TopPage = () => {
                 {
                   data && data.popularSong.map((e, idx) => (  
                   <Link to={`/song/${e.title}`} key={idx}>   
-                    <TopSong back={e.img}>
+                    <TopSong back={e.img} scrollH={scroll}>
                         <span>{idx + 1} 순위 {e.seeCount}회</span> 
-                        <img src={e.thumbImg}></img>  
+                        <img src={e.thumbImg} alt={e.title}></img>  
                         <p>{e.title}</p> 
                     </TopSong>  
                   </Link>

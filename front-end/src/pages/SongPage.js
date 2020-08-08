@@ -19,7 +19,7 @@ const SongPage = () => {
           else if(!data) return <p>찾고자 하는 노래가 없습니다</p>
           else return (
             <>  
-              <iframe width="100%" height="345" src={data.song.url}></iframe> 
+              <iframe width="100%" height="345" title="아이유송" src={data.song.url}></iframe> 
               <h1 className="center m0">{data.song.title}</h1>
               <p className="center gray">{data.song.date}</p>
               <p className="center">[ {data.song.albumInfo} ]</p>

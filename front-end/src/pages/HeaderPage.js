@@ -19,16 +19,18 @@ const CropBox = styled.div`
   }
 `;
 const HeaderBox = styled.div`
+   
   height: 284px;
   h1{
     padding-top: 100px; 
     color: white; 
-    padding-left: 10px;
+    padding-left: 10px;font-family:"Nanum Myeongjo";
   }
   p{
     color: white;  
     padding: 10px;
-    background: rgba(0, 0, 0, 0.7); 
+    background: rgba(0, 0, 0, 0.7); font-family:"Nanum Myeongjo";
+    font-size: 1.2rem;
   }
 `   
  
@@ -52,7 +54,7 @@ const HeaderPage = ({type, img}) => {
   return (
     <section> 
       <CropBox>
-        <img src={require(`../img/${img}`)} />
+        <img src={require(`../img/${img}`)} alt="헤더이미지"/>
       </CropBox> 
       <HeaderBox>
         <h1>{title}</h1>
