@@ -6,11 +6,14 @@ import { Query} from 'react-apollo'
 // import {useQuery } from '@apollo/client';
 
 const TopSong = styled.div`
+  overflow:hidden;
+  box-sizing:border-box;
+  padding:10px;
   span{ 
     z-index: 2;
     position: absolute;
     font-size: .7rem;
-    top: -7px;
+    top: 1px;
     left: -10px;
     padding: 1px 4px;
     background: rgba(0, 0, 0, 0.8);
@@ -23,28 +26,37 @@ const TopSong = styled.div`
   position:relative;
   img{ 
     height:120px;
-    bottom: 20px; 
+    bottom: 9px; 
     z-index:2; 
     left : 93px; 
     position: relative; 
-  } 
-  background-image: url(${props => { 
-    return (props.back)
-  }});  
+  }  
   height: 100px;  
   text-align: center; 
   margin: 0 auto;
-  margin-bottom: 57px; 
-  background-size: 380px 700px; 
-  background-attachment: fixed; 
-  background-position: 50% ${props => {
-    //return '50%;' // 스크롤 아래로 내렸을 시 버버벅 거립니다. 
-    return (50 + props.scrollH / 20).toFixed(4) + '%;'
-  }}
-  transition:background-position 1s linear; 
-  background-repeat: no-repeat;  
-  width: 93%; 
+  margin-bottom: 57px;   
+  width: 93%;  
+  transform : translateX(0);
 `  
+const TopSongBg = styled.div`
+background-repeat: no-repeat;  
+position: absolute; 
+top:15px; 
+left: 0; 
+width:100%;
+height:300%;
+background-image: url(${props => { 
+  return (props.back)
+}});  
+background-size: 380px 700px; 
+background-attachment: fixed; 
+background-position: center; 
+
+transform : translateY(${props => {
+  //return '50%;' // 스크롤 아래로 내렸을 시 버버벅 거립니다. 
+  return -(props.scrollH / 20).toFixed(4) + "%";
+}}) 
+`
 const TopsongHeader = styled.p`
   color: #aaa; 
   span{
@@ -69,15 +81,9 @@ const TopsongHeader = styled.p`
 ` 
 
 const TopPage = () => {  
-  const [scroll, setScroll] = useState(window.pageYOffset); 
-  let timeout;
+  const [scroll, setScroll] = useState(window.pageYOffset);  
   const handleScroll = () => { 
-    if(!timeout){ 
-      setScroll(window.pageYOffset + 100);
-      timeout = setTimeout(()=>{
-        timeout = null;
-      }, 500)
-    } 
+    setScroll(window.pageYOffset); 
   }
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -92,8 +98,9 @@ const TopPage = () => {
                 <>
                 {
                   data && data.popularSong.map((e, idx) => (  
-                  <Link to={`/song/${e.title}`} key={idx}>   
-                    <TopSong back={e.img} scrollH={scroll}>
+                  <Link to={`/song/${e.title}`} key={idx}>     
+                    <TopSong>
+                      <TopSongBg back={e.img} scrollH={scroll}></TopSongBg>
                         <span>{idx + 1} 순위 {e.seeCount}회</span> 
                         <img src={e.thumbImg} alt={e.title}></img>  
                         <p>{e.title}</p> 
