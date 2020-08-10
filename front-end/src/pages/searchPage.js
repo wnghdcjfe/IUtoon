@@ -56,7 +56,7 @@ top: 0;
 z-index: 3;
 width: 100%;
 text-align: right;
-background: rgba(255, 255, 255, 0.5); 
+background: rgba(255, 255, 255, 0.9); 
 `
 
 let debouncedFn; 

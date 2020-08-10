@@ -5,7 +5,7 @@ import { GET_POPULAR_SONG } from '../graphql'
 import { Query} from 'react-apollo'   
 // import {useQuery } from '@apollo/client';
 
-const TopSong = styled.div`
+const TopSong = styled.div` 
   overflow:hidden;
   box-sizing:border-box;
   padding:10px;
@@ -18,16 +18,7 @@ const TopSong = styled.div`
     padding: 1px 4px;
     background: rgba(0, 0, 0, 0.8);
     color: white;
-  }
-  p{
-    position: relative;
-    top: -71px;
-  }
-  p span{
-    padding: 3px; 
-    background: white; 
-    color: black;
-  }
+  } 
   position:relative;
   img{ 
     height:120px;
@@ -38,30 +29,23 @@ const TopSong = styled.div`
   }  
   height: 100px;  
   text-align: center; 
-  margin: 0 auto;
-  margin-bottom: 57px;   
-  width: 93%;  
-  transform : translateX(0);
-`  
+  margin: 0 auto; 
+  width: 93%;   
+`     
+
 const TopSongBg = styled.div`
+background-image : url(${props => props.back});
 background-repeat: no-repeat;  
 position: absolute; 
 top:15px; 
 left: 0; 
 width:100%;
 height:300%;
-background-image: url(${props => { 
-  return (props.back)
-}});  
 background-size: 380px 700px; 
 background-attachment: fixed; 
-background-position: center; 
-
-transform : translateY(${props => {
-  //return '50%;' // 스크롤 아래로 내렸을 시 버버벅 거립니다. 
-  return -(props.scrollH / 20).toFixed(4) + "%";
-}}) 
+background-position: bottom; 
 `
+
 const TopsongHeader = styled.p`
   color: #aaa; 
   span{
@@ -86,9 +70,13 @@ const TopsongHeader = styled.p`
 ` 
 
 const TopPage = () => {  
-  const [scroll, setScroll] = useState(window.pageYOffset);  
-  const handleScroll = () => { 
-    setScroll(window.pageYOffset); 
+  //const [scroll, setScroll] = useState(window.pageYOffset);  
+  const handleScroll = () => {
+    const div = [...document.querySelectorAll('.Topsong_back')] 
+    div.forEach(e =>{
+      e.style.transform = "translateY(" + Math.min(0, (20 + -window.pageYOffset / 15))+ "%)";
+      console.log(e.style.transform)
+    })  
   }
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
@@ -103,13 +91,13 @@ const TopPage = () => {
                 <>
                 {
                   data && data.popularSong.map((e, idx) => (  
-                  <Link to={`/song/${e.title}`} key={idx}>     
-                    <TopSong>
-                      <TopSongBg back={e.img} scrollH={scroll}></TopSongBg>
-                        <span>{idx + 1} 순위 {e.seeCount}회</span> 
-                        <img src={e.thumbImg} alt={e.title}></img>  
-                        <p><span>{e.title}</span></p> 
+                  <Link to={`/song/${e.title}` } key={idx}>   
+                    <span className="TopSong_span">{idx + 1} 순위 {e.seeCount}회</span> 
+                    <TopSong>  
+                      <TopSongBg back={e.img} className="Topsong_back"></TopSongBg> 
+                      <img src={e.thumbImg} alt={e.title}></img>   
                     </TopSong>  
+                    <p className="TopSong_title"><span>{e.title}</span></p>  
                   </Link>
                   ))
                 }

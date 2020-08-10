@@ -3,6 +3,13 @@
 
 마치 다음웹툰처럼 아이유의 곡들을 쉽게 볼 수 있는 UI를 구축했습니다. 많은 이용부탁드립니다. 
 
+# 버전업된 모습
+스크롤 했을 때 아이유의 사진이 마치 따라오는 듯한 이펙트를 만들기 위해 고생 좀 했습니다. 
+`translateY` 등 애니메이션 최적화해서 버버벅 거리는 현상을 모두 제거했습니다.  
+<p align="center"> 
+  <img src="https://raw.githubusercontent.com/wnghdcjfe/IUtoon/develop/sample.gif" width="300">
+</p> 
+
 # 구동모습
 <p align="center"> 
   <img src="https://raw.githubusercontent.com/wnghdcjfe/IUtoon/develop/example.gif" width="300">

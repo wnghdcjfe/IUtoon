@@ -106,3 +106,16 @@ a{
   from { opacity: 0; transform: translateY(10px);}
   to   { opacity: 1; transform: translateY(0px);}
 }
+.TopSong_span{ 
+  padding: 3px;
+  background: black;
+  color: white;
+  top: 11px;
+  position: relative;
+  z-index: 1;
+  font-size: 0.7rem;
+}
+.TopSong_title{
+  text-align: center;
+  margin-top: 5px;
+}
