@@ -21,7 +21,12 @@ const TopSong = styled.div`
   }
   p{
     position: relative;
-    top: -36px;
+    top: -71px;
+  }
+  p span{
+    padding: 3px; 
+    background: white; 
+    color: black;
   }
   position:relative;
   img{ 
@@ -103,7 +108,7 @@ const TopPage = () => {
                       <TopSongBg back={e.img} scrollH={scroll}></TopSongBg>
                         <span>{idx + 1} 순위 {e.seeCount}회</span> 
                         <img src={e.thumbImg} alt={e.title}></img>  
-                        <p>{e.title}</p> 
+                        <p><span>{e.title}</span></p> 
                     </TopSong>  
                   </Link>
                   ))
