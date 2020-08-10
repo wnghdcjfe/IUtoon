@@ -7,7 +7,7 @@
 스크롤 했을 때 아이유의 사진이 마치 따라오는 듯한 이펙트를 만들기 위해 고생 좀 했습니다. 
 `translateY` 등 애니메이션 최적화해서 버버벅 거리는 현상을 모두 제거했습니다.  
 <p align="center"> 
-  <img src="https://raw.githubusercontent.com/wnghdcjfe/IUtoon/develop/sample2.gif" width="300">
+  <img src="https://raw.githubusercontent.com/wnghdcjfe/IUtoon/develop/sample2.gif" width="700">
 </p> 
 
 # 구동모습
