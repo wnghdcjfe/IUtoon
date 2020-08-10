@@ -38,11 +38,11 @@ const TopSong = styled.div`
   background-size: 380px 700px; 
   background-attachment: fixed; 
   background-position: 50% ${props => {
-    return '50%;' // 스크롤 아래로 내렸을 시 버버벅 거립니다. 
-    return (50 + props.scrollH / 100).toFixed(4) + '%;'
+    //return '50%;' // 스크롤 아래로 내렸을 시 버버벅 거립니다. 
+    return (50 + props.scrollH / 20).toFixed(4) + '%;'
   }}
-  background-repeat: no-repeat; 
-  transform: translateZ(0); 
+  transition:background-position 1s linear; 
+  background-repeat: no-repeat;  
   width: 93%; 
 `  
 const TopsongHeader = styled.p`
@@ -70,8 +70,14 @@ const TopsongHeader = styled.p`
 
 const TopPage = () => {  
   const [scroll, setScroll] = useState(window.pageYOffset); 
+  let timeout;
   const handleScroll = () => { 
-    setScroll(window.pageYOffset);
+    if(!timeout){ 
+      setScroll(window.pageYOffset + 100);
+      timeout = setTimeout(()=>{
+        timeout = null;
+      }, 500)
+    } 
   }
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
